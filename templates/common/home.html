@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load static %}
 
 <head>
     <!-- Required meta tags -->
@@ -74,37 +75,22 @@
                 </div>
                 <div class="header__meta">
                     <ul class="meta__item d-xl-block d-none">
-                        <li><i class="fa-solid fa-location-dot"></i>Dhaka, Bangladesh</li>
+                        <li><i class="fa-solid fa-location-dot"></i>{{ current_user_location }}</li>
                     </ul>
                     <div class="language__select custom__dropdown">
+
                         <div class="selected">
                             <div class="selected_item">
-                                <img src="assets/images/flag/flag-01.png" alt="flag" />
-                                <span>English - USD</span>
+                                <img src="{% static 'images/flag/europe_flag.png'  %}" alt="flag" />
+                                <span>Europe - EUR</span>
                             </div>
                         </div>
+
                         <ul class="list">
-                            <li>
-                                <img src="assets/images/flag/flag-01.png" alt="flag" />
-                                English - USD
-                            </li>
-                            <li>
-                                <img src="assets/images/flag/flag-02.png" alt="flag" />
-                                Bangla - BDT
-                            </li>
-                            <li>
-                                <img src="assets/images/flag/flag-03.png" alt="flag" />
-                                France - FRF
-                            </li>
-                            <li>
-                                <img src="assets/images/flag/flag-04.png" alt="flag" />
-                                India - RUPI
-                            </li>
-                            <li>
-                                <img src="assets/images/flag/flag-05.png" alt="flag" />
-                                Turkish - LIRA
-                            </li>
+
                         </ul>
+
+
                     </div>
                     <ul class="meta__item">
                         <li>
@@ -290,7 +276,7 @@
                     <div class="header__meta">
                         <ul class="meta__item">
                             <li>
-                                <a href="tel:+0125698989"><i class="fa-solid fa-phone-flip"></i>+01 2569 8989</a>
+                                <a href="tel:+359 887286159"><i class="fa-solid fa-phone-flip"></i>+359 887286159</a>
                             </li>
                         </ul>
                     </div>

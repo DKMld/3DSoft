@@ -1,4 +1,4 @@
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 
@@ -40,8 +40,9 @@ def login_user(request):
         return redirect('home_page')
 
 
-
-
+def logout_user(request):
+    logout(request)
+    return redirect('home_page')
 
 
 

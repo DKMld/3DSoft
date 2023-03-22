@@ -92,14 +92,29 @@
 
 
                     </div>
-                    <ul class="meta__item">
-                        <li>
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#signup">
-                                <i class="fa-solid fa-user-plus"></i>
-                                <span>Sign up</span>
-                            </a>
-                        </li>
-                    </ul>
+
+                    {% if not user_is_auth %}
+                        <ul class="meta__item">
+                            <li>
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#signup">
+                                    <i class="fa-solid fa-user-plus"></i>
+                                    <span>Sign up</span>
+                                </a>
+                            </li>
+                        </ul>
+                    {% else %}
+                        <ul class="meta__item">
+{#                        user_logout#}
+                            <li>
+                                <a href="{% url 'user_logout' %}" >
+{#                                    <img width="15px" height="15px" src="{% static 'log_out_icon/log_out_icon 2.png' %}" alt="">#}
+                                    <span href="{% url 'user_logout' %}">Log out</span>
+                                </a>
+                            </li>
+                        </ul>
+                    {% endif %}
+
+
                     <div class="miniCart">
                         <div class="header__cart">
                             <a href="#" class="cart__btn">

@@ -424,14 +424,20 @@
                                 <div class="product__wrapper swiper__pagination">
                                     <div class="swiper arrival__Swiper">
                                         <div class="swiper-wrapper">
+
+
                                             <div class="swiper-slide">
+
+{#                                                {% for prod in products... %}#}
                                                 <div class="product-card">
                                                     <div class="product__image__wrapper">
                                                         <a href="product-single.html" class="product__image">
                                                             <img src="assets/images/arrival/arrival-01.png"
                                                                 alt="icon" />
                                                         </a>
+{#                                                        discount % number#}
                                                         <div class="badge">10%</div>
+
                                                         <div class="product__actions">
                                                             <a href="#" class="action__btn">
                                                                 <svg width="16" height="14" viewBox="0 0 16 14"
@@ -471,6 +477,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="product__content">
+{#                                                        product rating#}
                                                         <div class="product__rating">
                                                             <ul>
                                                                 <li><i class="fa-solid fa-star"></i></li>
@@ -481,15 +488,19 @@
                                                             </ul>
                                                             <div class="total__rating">(321)</div>
                                                         </div>
+
                                                         <div class="product__title">
+{#                                                            product name#}
                                                             <h5><a href="product-single.html">Tootsie Frooties- Taffy
                                                                     Candy - Bulk Fruit Chews - Fruity Roll Fruity
                                                                     Roll</a></h5>
                                                         </div>
                                                         <div class="product__bottom">
                                                             <div class="product__price">
+{#                                                                new price#}
                                                                 $22.00
-                                                                <del>$22.00</del>
+{#                                                                old price #}
+                                                                <del>$22.0000</del>
                                                             </div>
                                                             <div class="cart__action__btn">
                                                                 <div class="cart__btn">
@@ -509,7 +520,13 @@
                                                         </div>
                                                     </div>
                                                 </div>
+
+
+
+
                                             </div>
+
+
                                             <div class="swiper-slide">
                                                 <div class="product-card">
                                                     <div class="product__image__wrapper">

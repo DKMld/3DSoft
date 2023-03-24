@@ -26,9 +26,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'djangoProject.common',
+    'djangoProject.accounts',
+    'djangoProject.products',
 
-    'common',
-    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -97,6 +98,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, '/assets/')
 STATICFILES_DIRS = [
     BASE_DIR / 'assets'
 ]
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = 'media/'
 
 
 

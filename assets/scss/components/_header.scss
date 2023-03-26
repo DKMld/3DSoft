@@ -786,7 +786,434 @@
 /*********************************
 /* MiniCart Start 
 *********************************/
+.miniCart {
+    .header__cart {
+        margin-left: 18px;
+        @include respond(tabport) {
+            margin-left: 12px;
+        }
+        .cart__btn {
+            font-family: $default;
+            font-size: 16px;
+            font-weight: $medium;
+            line-height: 24px;
+            color: $white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 112px;
+            height: 44px;
+            background: $primary;
+            border-radius: $radius;
+            text-transform: capitalize;
+            position: relative;
 
+            @include respond(tabport) {
+                color: $content2;
+                width: inherit;
+                height: auto;
+                background: transparent;
+                font-size: 13px;
+                font-weight: $semibold;
+            }
+
+            &-img {
+                position: relative;
+                margin-right: 9px;
+                @include respond(tabport) {
+                    margin-right: 0;
+                }
+                img {
+                    width: 31px;
+                    height: auto;
+                    display: block;
+
+                    @media (min-width: 768px) {
+                        filter: brightness(0) invert(1);
+                    }
+                    @include respond(tabport) {
+                        width: 26px;
+                    }
+                }
+                .value {
+                    position: absolute;
+                    line-height: 8px;
+                    top: 0;
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+            }
+            .title {
+                @include respond(tabport) {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+.flyoutCart {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: $transition;
+
+    &.active {
+        opacity: 1;
+        visibility: visible;
+        right: 0;
+
+        .flyout__flip {
+            right: 0;
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+    .flyout {
+        &__flip {
+            @include flexbox($a: inherit, $jc: space-between);
+            flex-direction: column;
+            flex-wrap: nowrap;
+            position: absolute;
+            top: 0;
+            right: -200px;
+            background: $white;
+            width: 480px;
+            height: 100%;
+            box-shadow: 0px 14px 40px 0px #73737326;
+            padding: 40px;
+            z-index: 99999;
+            opacity: 0;
+            visibility: hidden;
+            transition: $transition;
+
+            @include respond(phone) {
+                width: 420px;
+                padding: 40px 30px;
+            }
+            @include respond(phone-sm) {
+                width: 370px;
+                padding: 30px 15px 50px;
+            }
+            @include respond(phone-xm) {
+                width: 315px;
+                padding: 30px 10px 100px;
+            }
+        }
+        &__inner {
+            height: calc(100% - 100px);
+            .cart__header-top {
+                @include flexbox($a: center, $jc: space-between);
+                margin-bottom: 30px;
+
+                .close__btn {
+                    cursor: pointer;
+                    width: auto;
+                }
+            }
+            .main__title {
+                font-family: $default;
+                font-size: 24px;
+                font-weight: $bold;
+                line-height: 32px;
+                color: $heading3;
+            }
+            .cart__title {
+                background: #f2f4f7;
+                padding: 10px;
+                margin-bottom: 15px;
+                border-radius: $radius;
+                @include flexbox($a: center, $jc: space-between);
+                h3 {
+                    //styleName: Text md/Bold;
+                    font-family: $default;
+                    font-size: 16px;
+                    font-weight: $bold;
+                    line-height: 24px;
+                    color: $heading3;
+                    margin-bottom: 0;
+                }
+            }
+            .cart__items {
+                // max-height: 550px;
+                height: calc(100% - 230px);
+                overflow: auto;
+                padding-right: 10px;
+            }
+            .cart {
+                &__subtotal {
+                    list-style: none;
+                    border-top: 1px solid #d0d5dd;
+                    border-bottom: 1px solid #d0d5dd;
+                    padding: 15px 0;
+
+                    li {
+                        @include flexbox($a: center, $jc: space-between);
+                        margin-bottom: 8px;
+
+                        &:last-of-type {
+                            margin-bottom: 0;
+                        }
+
+                        span {
+                            //styleName: Text sm/Semibold;
+                            font-family: $default;
+                            font-size: 14px;
+                            font-weight: $semibold;
+                            line-height: 20px;
+                            color: $content2;
+                        }
+                    }
+                }
+                &__total {
+                    padding-top: 15px;
+                    @include flexbox($a: center, $jc: space-between);
+                    h3 {
+                        font-family: $default;
+                        font-size: 18px;
+                        font-weight: $bold;
+                        line-height: 28px;
+                        color: $heading3;
+                        margin-bottom: 0;
+
+                        span {
+                            font-size: 14px;
+                            line-height: 20px;
+                        }
+                    }
+                    .total {
+                        font-size: 18px;
+                        font-weight: $bold;
+                        line-height: 28px;
+                        color: $heading3;
+                    }
+                }
+            }
+        }
+    }
+    .cart__btns {
+        @include flexbox($a: center, $jc: space-between);
+        width: 100%;
+        margin-top: 30px;
+
+        @include respond(phone-sm) {
+            display: block;
+        }
+
+        .btn {
+            flex-basis: calc(50% - 10px);
+            height: 44px;
+            padding: 10px 20px;
+            border-radius: $radius;
+
+            @include respond(phone-sm) {
+                font-size: 14px;
+                flex-basis: 100%;
+                width: 100%;
+                margin-right: 10px;
+
+                &:last-of-type {
+                    margin-right: 0;
+                    margin-top: 10px;
+                }
+            }
+
+            &-outline {
+                color: $content2;
+
+                &:hover {
+                    color: $white;
+                }
+            }
+        }
+    }
+}
+
+.shopping-card {
+    @include flexbox($jc: inherit);
+    flex-wrap: nowrap;
+    margin-bottom: 20px;
+
+    &__image {
+        position: relative;
+        width: 70px;
+        height: 70px;
+        background: $bg;
+        border-radius: 10px;
+        @include flexbox($a: center, $jc: center);
+        margin-right: 14px;
+
+        @include respond(phone-sm) {
+            margin-right: 10px;
+        }
+        img {
+            width: 100%;
+            height: 100%;
+            max-width: 80%;
+            object-fit: contain;
+            object-position: center;
+            display: block;
+            border-radius: 10px;
+            transition: $transition;
+        }
+    }
+    &__content {
+        flex: 1;
+        &-top {
+            @include flexbox($a: baseline, $jc: space-between);
+            flex-wrap: nowrap;
+            .product__title {
+                font-family: $default;
+                font-size: 14px;
+                font-weight: $regular;
+                line-height: 18px;
+                color: $heading2;
+                margin-bottom: 6px;
+                max-width: 210px;
+                @include respond(phone-sm) {
+                    font-size: 13px;
+                }
+                a {
+                    color: $heading2;
+                    transition: $transition;
+                    &:hover {
+                        color: $primary;
+                    }
+                }
+            }
+            .product__price {
+                //styleName: Text sm/Semibold;
+                font-family: $default;
+                font-size: 14px;
+                font-weight: $semibold;
+                line-height: 20px;
+                color: $heading2;
+                margin-bottom: 0;
+                max-width: 70px;
+
+                @include respond(phone-sm) {
+                    font-size: 13px;
+                }
+            }
+        }
+        &-bottom {
+            @include flexbox($a: center, $jc: space-between);
+            .quantity {
+                &__wrapper {
+                    display: flex;
+                    align-items: center;
+                }
+                width: 77px;
+                height: 28px;
+                border-radius: 6px;
+                padding: 4px 6px;
+                background: transparent;
+                border: 1px solid #d0d5dd;
+
+                button {
+                    .bar {
+                        background: $content2;
+                        width: 10px;
+
+                        &::before {
+                            background: $content2;
+                            height: 10px;
+                            right: 4px;
+                        }
+                    }
+                }
+                .qnttinput {
+                    color: $content2;
+                    font-size: 14px;
+                    @include respond(phone-sm) {
+                        font-size: 13px;
+                    }
+                }
+            }
+            .stock__item {
+                margin-left: 10px;
+                @include respond(phone-sm) {
+                    font-size: 13px;
+                    margin-left: 8px;
+                }
+            }
+        }
+    }
+    .action__btn {
+        font-family: $default;
+        font-size: 14px;
+        font-weight: $medium;
+        line-height: 17px;
+        color: $content2;
+        display: flex;
+        align-items: center;
+        border: none;
+        outline: none;
+        width: auto;
+        background: transparent;
+        cursor: pointer;
+
+        span {
+            @include respond(phone-xm) {
+                display: none;
+            }
+        }
+
+        &:focus {
+            border: none;
+            outline: none;
+        }
+
+        svg {
+            width: 16px;
+            height: auto;
+            margin-right: 6px;
+        }
+        &:hover {
+            color: $primary;
+
+            svg path {
+                stroke: $primary;
+            }
+        }
+    }
+    &__v2 {
+        align-items: center;
+        .shopping-card {
+            &__image {
+                height: 60px;
+                width: 60px;
+            }
+            &__content {
+                &-top {
+                    align-items: center;
+
+                    .product__title {
+                        max-width: 84%;
+                        line-height: 20px;
+                        color: $content2;
+                    }
+                }
+                .qty {
+                    color: $content2;
+                }
+            }
+        }
+    }
+}
+
+.stock__item {
+    font-size: 14px;
+    font-weight: $semibold;
+    line-height: 14px;
+    color: $green;
+}
 
 /*********************************
 /* MiniCart End 
@@ -795,7 +1222,189 @@
 /*********************************
 /* FlyOut Menu Start
 *********************************/
+.flyoutMenu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: $transition;
 
+    &.active {
+        opacity: 1;
+        visibility: visible;
+        right: 0;
+
+        .flyout__flip {
+            left: 0;
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+    .flyout {
+        &__flip {
+            @include flexbox($a: inherit, $jc: space-between);
+            flex-direction: column;
+            flex-wrap: nowrap;
+            position: absolute;
+            top: 0;
+            left: -200px;
+            // right: 0;
+            background: $white;
+            width: 360px;
+            height: 100%;
+            box-shadow: 0px 14px 40px 0px #73737326;
+            padding: 0px 25px;
+            z-index: 99999;
+            overflow-y: auto;
+            opacity: 0;
+            visibility: hidden;
+            transition: $transition;
+
+            @include respond(phone-sm) {
+                width: 370px;
+            }
+            @include respond(phone-xm) {
+                width: 310px;
+            }
+        }
+        &__inner {
+            .menu__header-top {
+                @include flexbox($a: center, $jc: space-between);
+                // margin-bottom: 30px;
+                padding: 15px 0 9px;
+
+                .closest__btn {
+                    cursor: pointer;
+                    width: auto;
+                }
+            }
+        }
+        &-main__menu {
+            margin-top: 16px;
+            li {
+                position: relative;
+                list-style: none;
+                padding: 10px 0;
+                // margin-bottom: 12px;
+                border-bottom: 1px solid $border;
+
+                a {
+                    font-family: $default;
+                    font-size: 14px;
+                    font-weight: $medium;
+                    color: $content2;
+                    display: block;
+                    line-height: 24px;
+                    padding: 0px 0;
+                    text-transform: capitalize;
+                    transition: $transition;
+                    position: relative;
+                    &:hover,
+                    &.active {
+                        color: $primary;
+                        &::after {
+                            color: $primary !important;
+                        }
+                    }
+                }
+                &:last-child a {
+                    margin-right: 0;
+                }
+
+                &.has__dropdown {
+                    a {
+                        position: relative;
+
+                        &::after {
+                            content: "\f078";
+                            font-family: "Font Awesome 5 Free";
+                            font-weight: 900;
+                            font-size: 11px;
+                            color: $content2;
+                            transition: all 0.3s linear;
+                            position: absolute;
+                            right: 0;
+                            // height: 100%;
+                            top: 50%;
+                            transform: translateY(-50%);
+                        }
+                    }
+                }
+                .sub__menu {
+                    position: relative;
+                    background: $white;
+                    z-index: 99;
+                    padding-left: 16px;
+                    margin-top: 8px;
+                    display: none;
+                    // opacity: 0;
+                    // visibility: hidden;
+                    // transition: $transition;
+
+                    li {
+                        // margin-bottom: 10px;
+                        padding: 0;
+                        border: none;
+                        &:last-of-type {
+                            margin-bottom: 0;
+                        }
+                        .title {
+                            font-family: $default;
+                            font-size: 14px;
+                            font-weight: $medium;
+                            color: $content2;
+                            display: block;
+                            line-height: 24px;
+                            // padding: 4px 0;
+                            text-transform: capitalize;
+                            transition: $transition;
+                            position: relative;
+                            &::before {
+                                display: none;
+                            }
+                            &::after {
+                                display: block;
+                            }
+                        }
+                        a {
+                            padding: 7px 0;
+                            font-size: 14px;
+                            line-height: 20px;
+                            font-family: $default;
+                            font-weight: $medium;
+                            color: $content2;
+                            // border-bottom: 1px dashed #d9d9d9;
+                            width: 100%;
+                            display: block;
+                            position: relative;
+                            z-index: 1;
+                            &::after {
+                                display: none;
+                            }
+                            &:hover,
+                            &.active {
+                                color: $primary;
+                            }
+                        }
+                        &:last-child a {
+                            border: none;
+                        }
+                    }
+                }
+                .sub__sub-menu {
+                    padding-left: 16px;
+                    display: none;
+                    // margin-top: 10px;
+                }
+            }
+        }
+    }
+}
 /*********************************
 /* FlyOut Menu End
 *********************************/

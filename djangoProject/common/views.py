@@ -1,14 +1,21 @@
 import requests
 from django.shortcuts import render
 
+from djangoProject.products.models import Products
+
 
 def home_page(request):
     current_user_location = get_current_user_location()
 
+    new_products = Products.objects.filter().order_by('id')[:7]
+    sale_products = Products.objects.filter(discount_percentage__gt=0).order_by('id')[:7]
+
     context = {
         'user_is_auth': request.user.is_authenticated,
-        'current_user_location': current_user_location['country']
+        'current_user_location': current_user_location['country'],
 
+        'new_products': new_products,
+        'sale_products': sale_products,
     }
 
     return render(request, 'common/home.html', context)
@@ -44,6 +51,7 @@ def checkout(request):
 
 def get_current_user_ip():
     response = requests.get(f'https://api64.ipify.org?format=json').json()
+    print(response['ip'])
     return response['ip']
 
 
@@ -51,7 +59,7 @@ def get_current_user_location():
     ip_address = get_current_user_ip()
 
     response = requests.get(f'https://ipapi.co/{ip_address}/json/').json()
-
+    print(response)
     location_data = {
         'ip': ip_address,
         'city': response.get('city'),

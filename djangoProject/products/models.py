@@ -2,11 +2,13 @@ from django.db import models
 from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
 
+
 CATEGORY_CHOICES = [
     ('airsoft', 'Airsoft'),
     ('mountain bike', 'Mountain bike'),
     ('other', 'Other'),
 ]
+
 
 SECONDARY_CATEGORY_CHOICES = [
     ('weapon attachments', 'Weapon attachments'),
@@ -22,7 +24,7 @@ class Products(models.Model):
     price = models.FloatField(null=True, max_length=10)
 
     in_stock = models.BooleanField(null=True)
-    discount_percentage = models.CharField(max_length=50, blank=True, null=True)
+    discount_percentage = models.CharField(max_length=50, blank=True, null=True, default=0)
     quantity = models.CharField(max_length=50, null=True)
 
     image = models.ImageField(null=True, upload_to='product_images', blank=True)
@@ -48,3 +50,9 @@ class ProductsLikes(models.Model):
 
     def __str__(self):
         return f"{self.product.product_name} liked by {self.user.username}"
+
+
+class ProductsCart(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank=False)
+    product = models.ForeignKey(Products, on_delete=models.CASCADE, null=False, blank=False)
+    quantity = models.CharField(max_length=50, null=False, blank=False, default=1)

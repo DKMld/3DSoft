@@ -25,3 +25,7 @@ def product_detail(request):
 #
 # def get_product_url(request, product_id):
 #     return request.META['HTTP_REFERER'] + f'#photo-{product_id}'
+
+
+def product_add_to_cart(request, product_slug):
+    print(product_slug)

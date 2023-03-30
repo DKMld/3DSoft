@@ -1,14 +1,15 @@
 import requests
 from django.shortcuts import render
 
-from djangoProject.products.models import Products
+from djangoProject.products.models import Products, ProductsCart
 
 
 def home_page(request):
     current_user_location = get_current_user_location()
 
-    new_products = Products.objects.filter().order_by('id')[:7]
-    sale_products = Products.objects.filter(discount_percentage__gt=0).order_by('id')[:7]
+    new_products = Products.objects.filter().order_by('id')[:10]
+    sale_products = Products.objects.filter(discount_percentage__gt=0).order_by('id')[:5]
+    products_in_cart = ProductsCart.objects.filter(user=request.user)
 
     context = {
         'user_is_auth': request.user.is_authenticated,
@@ -16,6 +17,9 @@ def home_page(request):
 
         'new_products': new_products,
         'sale_products': sale_products,
+
+        'products_in_cart': products_in_cart,
+
     }
 
     return render(request, 'common/home.html', context)

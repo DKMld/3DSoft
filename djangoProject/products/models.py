@@ -24,15 +24,15 @@ class Products(models.Model):
     price = models.FloatField(null=True, max_length=10)
 
     in_stock = models.BooleanField(null=True)
-    discount_percentage = models.CharField(max_length=50, blank=True, null=True, default=0)
-    quantity = models.CharField(max_length=50, null=True)
+    discount_percentage = models.FloatField(null=True, max_length=10, default=0)
+    quantity = models.CharField(max_length=50, null=True, default=1)
 
     image = models.ImageField(null=True, upload_to='product_images', blank=True)
 
     category = models.CharField(null=True, max_length=50, choices=CATEGORY_CHOICES)
     secondary_category = models.CharField(null=True, max_length=50, choices=SECONDARY_CATEGORY_CHOICES)
 
-    slug = models.SlugField(null=True, unique=True, blank=True)
+    slug = models.SlugField(null=True, unique=True, blank=True, max_length=200)
 
     def __str__(self):
         return f"{self.product_name} - {self.slug}"
@@ -43,6 +43,10 @@ class Products(models.Model):
             self.slug = slugify(self.category + '-' + self.secondary_category + '-' + self.product_name + '-' + str(self.id))
             self.save()
 
+    def discounted_price(self):
+        discounted_price = (self.price * self.discount_percentage) / 100
+        price = self.price - discounted_price
+        return price
 
 class ProductsLikes(models.Model):
     product = models.ForeignKey(Products, on_delete=models.CASCADE, null=False)

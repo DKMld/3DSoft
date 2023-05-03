@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 
 
 def register_user(request):
-
+    # Need to make notification if user is logged / registered / already have an account..
     if request.method == "POST":
         username = request.POST.get('username')
         email = request.POST.get('email')
@@ -14,15 +14,14 @@ def register_user(request):
 
         if user is not None:
             login(request, user)
-            return None
+            return redirect('home_page')
 
         create_user = User.objects.create_user(username=username, email=email, password=password)
         create_user.save()
 
-        return None
+        return redirect('home_page')
 
     return render(request, 'auth/signup.html')
-
 
 
 def login_user(request):
@@ -45,6 +44,5 @@ def logout_user(request):
     return redirect('home_page')
 
 
-
 def delete_user(request):
-    pass
+    ...

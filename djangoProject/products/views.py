@@ -3,9 +3,18 @@ from django.shortcuts import render, redirect
 from djangoProject.products.models import Products, ProductsLikes
 
 
-def product_detail(request):
+def product_detail(request, product_slug):
 
-    return render(request, 'product/product-single.html')
+    product = Products.objects.filter(slug=product_slug).get()
+
+    context = {
+        'product': product
+    }
+
+    return render(request, 'product/product-single.html', context)
+
+
+
 
 
 # def product_like(request, pk):

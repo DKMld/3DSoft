@@ -93,10 +93,10 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-STATIC_URL = 'assets/'
-STATIC_ROOT = os.path.join(BASE_DIR, '/assets/')
+STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, '/static/assets/')
 STATICFILES_DIRS = [
-    BASE_DIR / 'assets'
+    BASE_DIR / 'static/assets'
 ]
 
 

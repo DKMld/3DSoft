@@ -1,304 +1,20 @@
+{% extends  'common/home.html'%}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
 
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>SuperMart - eCommerce HTML5 Template</title>
-    <meta name="description"
-        content="SuperMart eCommerce HTML Template specially designed for multipurpose shops like the mega store, grocery stores, supermarkets, organic shops, and online stores" />
-    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/f-icon" />
 
-    <!-- font awesome -->
-    <link rel="stylesheet" href="assets/css/all.min.css" />
-    <!-- bootstraph -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-    <!-- Fancy Box -->
-    <link rel="stylesheet" href="assets/css/jquery.fancybox.min.css" />
-    <!-- swiper js -->
-    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
-    <!-- Nice Select -->
-    <link rel="stylesheet" href="assets/css/nice-select.css" />
-    <!-- Countdown js -->
-    <link rel="stylesheet" href="assets/css/jquery.countdown.css" />
-    <!-- User's CSS Here -->
-    <link rel="stylesheet" href="assets/css/style.css" />
-</head>
 
+
+
+{% block content %}
 <body>
-    <!-- Header Start  -->
-    <header class="header header-sticky">
-        <div class="container">
-            <!-- Header Top Start -->
-            <div class="header__top">
-                <div class="header__left">
-                    <!-- Header Toggle Start -->
-                    <div class="header__toggle d-lg-none">
-                        <button class="toggler__btn">
-                            <svg width="18" height="12" viewBox="0 0 18 12" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M0 12H18V10H0V12ZM0 7H18V5H0V7ZM0 0V2H18V0H0Z" fill="#667085" />
-                            </svg>
-                        </button>
-                    </div>
-                    <!-- Header Toggle End -->
-                    <div class="header__logo">
-                        <a href="home.html"><img src="assets/images/logo/logo.png" alt="logo" /> </a>
-                    </div>
-                    <div class="search__form__wrapper">
-                        <form action="search.html" method="post" class="search__form">
-                            <div class="select__style">
-                                <select name="filter" class="category-select">
-                                    <option value="1">Category</option>
-                                    <option value="2">Groceries</option>
-                                    <option value="3">Computer</option>
-                                    <option value="4">Women</option>
-                                    <option value="5">Electronics</option>
-                                    <option value="6">Men</option>
-                                    <option value="7">Baby</option>
-                                    <option value="8">Sports</option>
-                                </select>
-                            </div>
-                            <input type="search" class="form-control" name="search"
-                                placeholder="What are you looking for..." />
-                            <button type="submit">
-                                <img src="assets/images/search.png" alt="search" />
-                            </button>
-                        </form>
-                    </div>
-                </div>
-                <div class="header__meta">
-                    <ul class="meta__item d-xl-block d-none">
-                        <li><i class="fa-solid fa-location-dot"></i>Dhaka, Bangladesh</li>
-                    </ul>
-                    <div class="language__select custom__dropdown">
-                        <div class="selected">
-                            <div class="selected_item">
-                                <img src="assets/images/flag/flag-01.png" alt="flag" />
-                                <span>English - USD</span>
-                            </div>
-                        </div>
-                        <ul class="list">
-                            <li>
-                                <img src="assets/images/flag/flag-01.png" alt="flag" />
-                                English - USD
-                            </li>
-                            <li>
-                                <img src="assets/images/flag/flag-02.png" alt="flag" />
-                                Bangla - BDT
-                            </li>
-                            <li>
-                                <img src="assets/images/flag/flag-03.png" alt="flag" />
-                                France - FRF
-                            </li>
-                            <li>
-                                <img src="assets/images/flag/flag-04.png" alt="flag" />
-                                India - RUPI
-                            </li>
-                            <li>
-                                <img src="assets/images/flag/flag-05.png" alt="flag" />
-                                Turkish - LIRA
-                            </li>
-                        </ul>
-                    </div>
-                    <ul class="meta__item">
-                        <li>
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#signup">
-                                <i class="fa-solid fa-user-plus"></i>
-                                <span>Sign up</span>
-                            </a>
-                        </li>
-                    </ul>
-                    <div class="miniCart">
-                        <div class="header__cart">
-                            <a href="#" class="cart__btn">
-                                <div class="cart__btn-img">
-                                    <img src="assets/images/cart-icon.png" alt="cart-icon" />
-                                    <span class="value">10</span>
-                                </div>
-                                <span class="title">cart</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Header Top End -->
-            </div>
-            <!-- Search Form -->
-            <form action="search.html" method="post" class="search__form full__width d-lg-none d-flex">
-                <input type="search" class="form-control" name="search" placeholder="What are you looking for..." />
-                <button type="submit">
-                    <img src="assets/images/search.png" alt="search" />
-                </button>
-            </form>
-            <!-- Search Form -->
-        </div>
-        <nav class="nav d-none d-lg-flex">
-            <div class="container">
-                <!-- Header Wrap Start  -->
-                <div class="header__wrapper">
-                    <div class="header__menu">
-                        <ul class="main__menu">
-                            <li class="has__dropdown">
-                                <a href="#">Home</a>
-                                <!-- Dropdown -->
-                                <ul class="sub__menu">
-                                    <li><a href="home.html">Home-01</a></li>
-                                    <li><a href="home-02.html">Home-02</a></li>
-                                    <li><a href="home-03.html">Home-03</a></li>
-                                    <li><a href="home-04.html">Home-04</a></li>
-                                </ul>
-                                <!-- Dropdown -->
-                            </li>
-                            <li class="has__dropdown position-static">
-                                <a href="#">Collection</a>
-                                <!-- Mega Menu -->
-                                <div class="mega__menu sub__menu">
-                                    <ul class="mega__menu-item">
-                                        <li class="sub-mega__menu">
-                                            <a class="menu__title" href="#">Groceries</a>
-                                            <ul>
-                                                <li><a href="all-categories.html">Meat &amp; Seafood</a></li>
-                                                <li><a href="all-categories.html">Forzen Food</a></li>
-                                                <li><a href="all-categories.html">Beverage</a></li>
-                                                <li><a href="all-categories.html">Dairy</a></li>
-                                                <li><a href="all-categories.html">Beverage</a></li>
-                                                <li><a href="all-categories.html">Bekery &amp; Bread</a></li>
-                                                <li><a href="all-categories.html">Candy</a></li>
-                                                <li><a href="all-categories.html">Beverage</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="sub-mega__menu">
-                                            <a class="menu__title" href="#">Electronics</a>
-                                            <ul>
-                                                <li><a href="all-categories.html">Computer &amp; laptop</a></li>
-                                                <li><a href="all-categories.html">Camera</a></li>
-                                                <li><a href="all-categories.html">Headphone</a></li>
-                                                <li><a href="all-categories.html">Smarwatches</a></li>
-                                                <li><a href="all-categories.html">Mobile & Tablets</a></li>
-                                                <li><a href="all-categories.html">Television</a></li>
-                                                <li><a href="all-categories.html">Smartphone</a></li>
-                                                <li><a href="all-categories.html">Spekears</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="sub-mega__menu">
-                                            <a class="menu__title" href="#">Women</a>
-                                            <ul>
-                                                <li><a href="all-categories.html">Jewelry</a></li>
-                                                <li><a href="all-categories.html">Athletic shoes</a></li>
-                                                <li><a href="all-categories.html">Jackets</a></li>
-                                                <li><a href="all-categories.html">Socks</a></li>
-                                                <li><a href="all-categories.html">Sleepwear</a></li>
-                                                <li><a href="all-categories.html">Dresses</a></li>
-                                                <li><a href="all-categories.html">T-shirt</a></li>
-                                                <li><a href="all-categories.html">Hats</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="sub-mega__menu">
-                                            <a class="menu__title" href="#">Men</a>
-                                            <ul>
-                                                <li><a href="all-categories.html">Men Suits</a></li>
-                                                <li><a href="all-categories.html">Sleepwear</a></li>
-                                                <li><a href="all-categories.html">Athletic shoes</a></li>
-                                                <li><a href="all-categories.html">T-shirt</a></li>
-                                                <li><a href="all-categories.html">Jackets</a></li>
-                                                <li><a href="all-categories.html">Socks</a></li>
-                                                <li><a href="all-categories.html">Hats</a></li>
-                                                <li><a href="all-categories.html">Glasses</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="sub-mega__menu">
-                                            <a class="menu__title" href="#">Kides</a>
-                                            <ul>
-                                                <li><a href="all-categories.html">Men Suits</a></li>
-                                                <li><a href="all-categories.html">Sleepwear</a></li>
-                                                <li><a href="all-categories.html">Athletic shoes</a></li>
-                                                <li><a href="all-categories.html">T-shirt</a></li>
-                                                <li><a href="all-categories.html">Jackets</a></li>
-                                                <li><a href="all-categories.html">Socks</a></li>
-                                                <li><a href="all-categories.html">Hats</a></li>
-                                                <li><a href="all-categories.html">Glasses</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="sub-mega__menu">
-                                            <a class="menu__title" href="#">Sports</a>
-                                            <ul>
-                                                <li><a href="all-categories.html">Gaming Edition</a></li>
-                                                <li><a href="all-categories.html">Gaming Headset</a></li>
-                                                <li><a href="all-categories.html">Gaming Mouse Pad</a></li>
-                                                <li><a href="all-categories.html">Gaming Mouse </a></li>
-                                                <li><a href="all-categories.html">Gaming Glasses</a></li>
-                                                <li><a href="all-categories.html">Gaming Keyboard</a></li>
-                                                <li><a href="all-categories.html">Gaming Microphone</a></li>
-                                                <li><a href="all-categories.html">Controller Charger</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <!-- Mega Menu -->
-                            </li>
-                            <li class="has__dropdown">
-                                <a href="#">pages</a>
-                                <!-- Dropdown -->
-                                <ul class="sub__menu">
-                                    <li><a href="about.html">About</a></li>
-                                    <li><a href="profile.html">Profile</a></li>
-                                    <li><a href="dashboard.html">Dashboard</a></li>
-                                    <li><a href="login.html">Login</a></li>
-                                    <li><a href="signup.html">SignUp</a></li>
-                                    <li><a href="forget-password.html">Forget Password</a></li>
-                                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                                    <li><a href="terms.html">Terms &amp; Conditions</a></li>
-                                    <li><a href="comming-soon.html">Comming Soon</a></li>
-                                    <li><a href="error.html">404</a></li>
-                                </ul>
-                                <!-- Dropdown -->
-                            </li>
-                            <li><a href="all-categories.html">Hot Offers</a></li>
-                            <li class="has__dropdown active">
-                                <a href="#">Shop</a>
-                                <!-- Dropdown -->
-                                <ul class="sub__menu">
-                                    <li><a href="product.html">Shop</a></li>
-                                    <li><a href="product-single.html">Shop Details</a></li>
-                                    <li><a href="search.html">Shop Search</a></li>
-                                    <li><a href="cart.html">Shop Cart</a></li>
-                                    <li><a href="checkout.html">Shop Checkout</a></li>
-                                    <li><a href="tracking.html">Order Tracker</a></li>
-                                </ul>
-                                <!-- Dropdown -->
-                            </li>
-                            <li class="has__dropdown">
-                                <a href="#">Blog</a>
-                                <!-- Dropdown -->
-                                <ul class="sub__menu">
-                                    <li><a href="blog-list.html">Blog List</a></li>
-                                    <li><a href="blog-grid.html">Blog Grid</a></li>
-                                    <li><a href="blog-single.html">Blog Single</a></li>
-                                </ul>
-                                <!-- Dropdown -->
-                            </li>
-                            <li>
-                                <a href="contact.html">Contact</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="header__meta">
-                        <ul class="meta__item">
-                            <li>
-                                <a href="tel:+0125698989"><i class="fa-solid fa-phone-flip"></i>+01 2569 8989</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- Header Wrap End  -->
-            </div>
-        </nav>
-    </header>
-    <!-- Header End -->
+
+
+
+
+
 
     <!-- product detail section start  -->
     <section class="product-main">
@@ -306,52 +22,53 @@
             <div class="row product-detail">
                 <div class="col-md-6">
                     <div class="product-gallery">
-                        <div class="product-gallery__thumb swiper productGallerySwiperThumb">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <div class="gallery-item">
-                                        <img src="assets/images/products/prod-01.png" alt="product iamge" />
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="gallery-item">
-                                        <img src="assets/images/products/prod-02.png" alt="product iamge" />
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="gallery-item">
-                                        <img src="assets/images/products/prod-03.png" alt="product iamge" />
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="gallery-item">
-                                        <img src="assets/images/products/prod-04.png" alt="product iamge" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+{#                        <div class="product-gallery__thumb swiper productGallerySwiperThumb">#}
+{#                            <div class="swiper-wrapper">#}
+{#                                <div class="swiper-slide">#}
+{##}
+{#                                    <div class="gallery-item">#}
+{#                                        <img src="{{ product.image.url }}" alt="product iamge" />#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                                <div class="swiper-slide">#}
+{#                                    <div class="gallery-item">#}
+{#                                        <img src="assets/images/products/prod-02.png" alt="product iamge" />#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                                <div class="swiper-slide">#}
+{#                                    <div class="gallery-item">#}
+{#                                        <img src="assets/images/products/prod-03.png" alt="product iamge" />#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                                <div class="swiper-slide">#}
+{#                                    <div class="gallery-item">#}
+{#                                        <img src="assets/images/products/prod-04.png" alt="product iamge" />#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
                         <div class="product-gallery__main swiper productGallerySwiper">
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
                                     <div class="gallery-item">
-                                        <img src="assets/images/products/prod-01.png" alt="product iamge" />
+                                        <img src="{{ product.image.url }}" alt="product iamge" />
                                     </div>
                                 </div>
-                                <div class="swiper-slide">
-                                    <div class="gallery-item">
-                                        <img src="assets/images/products/prod-02.png" alt="product iamge" />
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="gallery-item">
-                                        <img src="assets/images/products/prod-03.png" alt="product iamge" />
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="gallery-item">
-                                        <img src="assets/images/products/prod-04.png" alt="product iamge" />
-                                    </div>
-                                </div>
+{#                                <div class="swiper-slide">#}
+{#                                    <div class="gallery-item">#}
+{#                                        <img src="assets/images/products/prod-02.png" alt="product iamge" />#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                                <div class="swiper-slide">#}
+{#                                    <div class="gallery-item">#}
+{#                                        <img src="assets/images/products/prod-03.png" alt="product iamge" />#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                                <div class="swiper-slide">#}
+{#                                    <div class="gallery-item">#}
+{#                                        <img src="assets/images/products/prod-04.png" alt="product iamge" />#}
+{#                                    </div>#}
+{#                                </div>#}
                             </div>
                         </div>
                     </div>
@@ -359,36 +76,36 @@
 
                 <div class="col-md-6">
                     <div class="product-detail__wrapper">
-                        <h2 class="product-detail__title">EB 18 Large Cage Free White A Egg</h2>
+                        <h2 class="product-detail__title">{{ product.product_name }}</h2>
                         <div class="product-detail__meta">
-                            <div class="rating">
-                                <ul>
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                    <li><i class="fa-regular fa-star"></i></li>
-                                    <li><i class="fa-regular fa-star"></i></li>
-                                </ul>
-                                <div class="total__rating">
-                                    <a href="#">(3,822 ratings)</a>
-                                </div>
-                            </div>
+{#                            <div class="rating">#}
+{#                                <ul>#}
+{#                                    <li><i class="fa-solid fa-star"></i></li>#}
+{#                                    <li><i class="fa-solid fa-star"></i></li>#}
+{#                                    <li><i class="fa-solid fa-star"></i></li>#}
+{#                                    <li><i class="fa-regular fa-star"></i></li>#}
+{#                                    <li><i class="fa-regular fa-star"></i></li>#}
+{#                                </ul>#}
+{#                                <div class="total__rating">#}
+{#                                    <a href="#">(3,822 ratings)</a>#}
+{#                                </div>#}
+{#                            </div>#}
                             <ul class="right-meta">
-                                <li>
-                                    <a href="#" class="share__btn">
-                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M2.6665 8V13.3333C2.6665 13.687 2.80698 14.0261 3.05703 14.2761C3.30708 14.5262 3.64622 14.6667 3.99984 14.6667H11.9998C12.3535 14.6667 12.6926 14.5262 12.9426 14.2761C13.1927 14.0261 13.3332 13.687 13.3332 13.3333V8"
-                                                stroke="#002642" stroke-linecap="round" stroke-linejoin="round" />
-                                            <path d="M10.6668 3.99998L8.00016 1.33331L5.3335 3.99998" stroke="#002642"
-                                                stroke-linecap="round" stroke-linejoin="round" />
-                                            <path d="M8 1.33331V9.99998" stroke="#002642" stroke-linecap="round"
-                                                stroke-linejoin="round" />
-                                        </svg>
-                                        Share
-                                    </a>
-                                </li>
+{#                                <li>#}
+{#                                    <a href="#" class="share__btn">#}
+{#                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"#}
+{#                                            xmlns="http://www.w3.org/2000/svg">#}
+{#                                            <path#}
+{#                                                d="M2.6665 8V13.3333C2.6665 13.687 2.80698 14.0261 3.05703 14.2761C3.30708 14.5262 3.64622 14.6667 3.99984 14.6667H11.9998C12.3535 14.6667 12.6926 14.5262 12.9426 14.2761C13.1927 14.0261 13.3332 13.687 13.3332 13.3333V8"#}
+{#                                                stroke="#002642" stroke-linecap="round" stroke-linejoin="round" />#}
+{#                                            <path d="M10.6668 3.99998L8.00016 1.33331L5.3335 3.99998" stroke="#002642"#}
+{#                                                stroke-linecap="round" stroke-linejoin="round" />#}
+{#                                            <path d="M8 1.33331V9.99998" stroke="#002642" stroke-linecap="round"#}
+{#                                                stroke-linejoin="round" />#}
+{#                                        </svg>#}
+{#                                        Share#}
+{#                                    </a>#}
+{#                                </li>#}
                                 <li>
                                     <a href="#" class="wishlist__btn">
                                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
@@ -400,66 +117,73 @@
                                         Add to Wishlist
                                     </a>
                                 </li>
-                                <li>
-                                    <div class="stock__item">In-stock</div>
-                                </li>
+                                {% if product.in_stock %}
+                                    <li>
+                                        <div class="stock__item">In-stock</div>
+                                     </li>
+                                {% else %}
+                                    <li>
+                                        <div class="stock__item">Out of stock</div>
+                                    </li>
+                                {% endif %}
+
                             </ul>
                         </div>
-                        <h3 class="product-detail__price">$15.00</h3>
+
+                        <h3 class="product-detail__price">{{ product.price }}lv.</h3>
+
                         <p class="product-detail__short_desc">
-                            There are many variations of passages of Lorem Ipsum and available,majority have suffered
-                            alteration in somey form, by injected humour, or randomised words which don't look even
-                            slightly
-                            believable.
+                            {{ product.description }}
                         </p>
-                        <div class="product-detail__attr">
-                            <div class="product__attr">
-                                <span class="product-detail--stroke">Filter By Color</span>
-                                <ul class="product__attr--color">
-                                    <li>
-                                        <input type="radio" name="filterByColor" id="colorGreen01" value="green" />
-                                        <label for="colorGreen01" data-bg="#12B76A"></label>
-                                    </li>
 
-                                    <li>
-                                        <input type="radio" name="filterByColor" id="colorYellow01" value="yellow" />
-                                        <label for="colorYellow01" data-bg="#F1C584"></label>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+{#                        <div class="product-detail__attr">#}
+{#                            <div class="product__attr">#}
+{#                                <span class="product-detail--stroke">Filter By Color</span>#}
+{#                                <ul class="product__attr--color">#}
+{#                                    <li>#}
+{#                                        <input type="radio" name="filterByColor" id="colorGreen01" value="green" />#}
+{#                                        <label for="colorGreen01" data-bg="#12B76A"></label>#}
+{#                                    </li>#}
+{##}
+{#                                    <li>#}
+{#                                        <input type="radio" name="filterByColor" id="colorYellow01" value="yellow" />#}
+{#                                        <label for="colorYellow01" data-bg="#F1C584"></label>#}
+{#                                    </li>#}
+{#                                </ul>#}
+{#                            </div>#}
+{#                        </div>#}
 
-                        <div class="product-detail__attr">
-                            <div class="product__attr">
-                                <span class="product-detail--stroke">Size</span>
-                                <ul class="product__attr--size">
-                                    <li>
-                                        <input type="radio" name="filterBySize" id="sizeXXL-01" value="xxl" />
-                                        <label for="sizeXXL-01">XXL</label>
-                                    </li>
-                                    <li>
-                                        <input type="radio" name="filterBySize" id="sizeXL-01" value="xl" />
-                                        <label for="sizeXL-01">XL</label>
-                                    </li>
-                                    <li>
-                                        <input type="radio" name="filterBySize" id="sizeL-01" value="l" />
-                                        <label for="sizeL-01">L</label>
-                                    </li>
-                                    <li>
-                                        <input type="radio" name="filterBySize" id="sizeM-01" value="m" />
-                                        <label for="sizeM-01">M</label>
-                                    </li>
-                                    <li>
-                                        <input type="radio" name="filterBySize" id="sizeS-01" value="s" />
-                                        <label for="sizeS-01">S</label>
-                                    </li>
-                                    <li>
-                                        <input type="radio" name="filterBySize" id="sizeXS-01" value="xs" />
-                                        <label for="sizeXS-01">XS</label>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+{#                        <div class="product-detail__attr">#}
+{#                            <div class="product__attr">#}
+{#                                <span class="product-detail--stroke">Size</span>#}
+{#                                <ul class="product__attr--size">#}
+{#                                    <li>#}
+{#                                        <input type="radio" name="filterBySize" id="sizeXXL-01" value="xxl" />#}
+{#                                        <label for="sizeXXL-01">XXL</label>#}
+{#                                    </li>#}
+{#                                    <li>#}
+{#                                        <input type="radio" name="filterBySize" id="sizeXL-01" value="xl" />#}
+{#                                        <label for="sizeXL-01">XL</label>#}
+{#                                    </li>#}
+{#                                    <li>#}
+{#                                        <input type="radio" name="filterBySize" id="sizeL-01" value="l" />#}
+{#                                        <label for="sizeL-01">L</label>#}
+{#                                    </li>#}
+{#                                    <li>#}
+{#                                        <input type="radio" name="filterBySize" id="sizeM-01" value="m" />#}
+{#                                        <label for="sizeM-01">M</label>#}
+{#                                    </li>#}
+{#                                    <li>#}
+{#                                        <input type="radio" name="filterBySize" id="sizeS-01" value="s" />#}
+{#                                        <label for="sizeS-01">S</label>#}
+{#                                    </li>#}
+{#                                    <li>#}
+{#                                        <input type="radio" name="filterBySize" id="sizeXS-01" value="xs" />#}
+{#                                        <label for="sizeXS-01">XS</label>#}
+{#                                    </li>#}
+{#                                </ul>#}
+{#                            </div>#}
+{#                        </div>#}
 
                         <div class="product-detail__qty">
                             <span class="product-detail--stroke">quantity</span>
@@ -551,27 +275,27 @@
                                         Product Details
                                     </button>
                                 </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="groceries-tab" data-bs-toggle="tab"
-                                        data-bs-target="#groceries-tab-pane" type="button" role="tab"
-                                        aria-controls="groceries-tab-pane" aria-selected="false">
-                                        Additional Information
-                                    </button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="women-tab" data-bs-toggle="tab"
-                                        data-bs-target="#women-tab-pane" type="button" role="tab"
-                                        aria-controls="women-tab-pane" aria-selected="false">
-                                        Reviews
-                                    </button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="electronics-tab" data-bs-toggle="tab"
-                                        data-bs-target="#electronics-tab-pane" type="button" role="tab"
-                                        aria-controls="electronics-tab-pane" aria-selected="false">
-                                        Questions
-                                    </button>
-                                </li>
+{#                                <li class="nav-item" role="presentation">#}
+{#                                    <button class="nav-link" id="groceries-tab" data-bs-toggle="tab"#}
+{#                                        data-bs-target="#groceries-tab-pane" type="button" role="tab"#}
+{#                                        aria-controls="groceries-tab-pane" aria-selected="false">#}
+{#                                        Additional Information#}
+{#                                    </button>#}
+{#                                </li>#}
+{#                                <li class="nav-item" role="presentation">#}
+{#                                    <button class="nav-link" id="women-tab" data-bs-toggle="tab"#}
+{#                                        data-bs-target="#women-tab-pane" type="button" role="tab"#}
+{#                                        aria-controls="women-tab-pane" aria-selected="false">#}
+{#                                        Reviews#}
+{#                                    </button>#}
+{#                                </li>#}
+{#                                <li class="nav-item" role="presentation">#}
+{#                                    <button class="nav-link" id="electronics-tab" data-bs-toggle="tab"#}
+{#                                        data-bs-target="#electronics-tab-pane" type="button" role="tab"#}
+{#                                        aria-controls="electronics-tab-pane" aria-selected="false">#}
+{#                                        Questions#}
+{#                                    </button>#}
+{#                                </li>#}
                             </ul>
                         </div>
                     </div>
@@ -580,64 +304,50 @@
                             aria-labelledby="home-tab" tabindex="0">
                             <div class="content__body">
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dui cursus malesuada massa
-                                    vitae sed elementum volutpat consectetur. Amet turpis aenean praesent arcu turpis
-                                    elementum
-                                    vitae euismod ante. Dui diam vitae lorem faucibus non. Arcu maecenas ornare sit
-                                    tortor.
-                                    <br />
-                                    <br />
-                                    Proin nulla elit ornare enim enim. Mauris placerat mauris at consequat. Quis
-                                    elementum ipsum et cras sit sagittis eu, aliquet nibh. Eu nulla nunc, purus
-                                    phasellus facilisi risus
-                                    molestie. Faucibus amet ut tempor, vehicula amet. Duis aliquam tellus urna, nisl
-                                    vivamus sed aliquam tincidunt. Vitae mi varius egestas sed tristique cras odio.
-                                    Tempor aliquam eget
-                                    phasellus sit lectus imperdiet. Arcu adipiscing lorem eu leo orci condimentum
-                                    imperdiet. Morbi tellus velit nunc massa turpis tortor quis. Rutrum at faucibus quam
-                                    consectetur.
+                                    {{ product.description }}
+
                                 </p>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="groceries-tab-pane" role="tabpanel"
-                            aria-labelledby="groceries-tab" tabindex="0">
-                            <div class="content__body">
-                                <p>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi aliquam quod
-                                    sapiente maxime necessitatibus natus incidunt voluptate, ut illo asperiores.
-                                    Provident error sit fuga
-                                    amet magnam sed reiciendis minus odio.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="women-tab-pane" role="tabpanel" aria-labelledby="women-tab"
-                            tabindex="0">
-                            <div class="content__body">
-                                <p>
-                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque, non! Non quisquam
-                                    repellat ullam eos, error voluptates eligendi tenetur veritatis, eius cumque dolor,
-                                    vero
-                                    excepturi. Repellendus, blanditiis. Incidunt mollitia ex ipsum minus quia nesciunt
-                                    repudiandae obcaecati tempore laudantium vitae, velit, dolore molestiae soluta
-                                    voluptate.
-                                    Doloremque nemo culpa voluptas sit magni.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="electronics-tab-pane" role="tabpanel"
-                            aria-labelledby="electronics-tab" tabindex="0">
-                            <div class="content__body">
-                                <p>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, placeat quibusdam.
-                                    Reiciendis veritatis facere, perspiciatis unde nostrum hic deleniti, optio quibusdam
-                                    quae
-                                    repellendus laboriosam aut perferendis quis dolore, deserunt illo animi quod tempora
-                                    adipisci consequatur enim! Aspernatur corporis provident, iusto laborum vero libero
-                                    similique
-                                    debitis inventore repellat doloribus. Neque, ipsam!
-                                </p>
-                            </div>
-                        </div>
+{#                        <div class="tab-pane fade" id="groceries-tab-pane" role="tabpanel"#}
+{#                            aria-labelledby="groceries-tab" tabindex="0">#}
+{#                            <div class="content__body">#}
+{#                                <p>#}
+{#                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi aliquam quod#}
+{#                                    sapiente maxime necessitatibus natus incidunt voluptate, ut illo asperiores.#}
+{#                                    Provident error sit fuga#}
+{#                                    amet magnam sed reiciendis minus odio.#}
+{#                                </p>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="tab-pane fade" id="women-tab-pane" role="tabpanel" aria-labelledby="women-tab"#}
+{#                            tabindex="0">#}
+{#                            <div class="content__body">#}
+{#                                <p>#}
+{#                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque, non! Non quisquam#}
+{#                                    repellat ullam eos, error voluptates eligendi tenetur veritatis, eius cumque dolor,#}
+{#                                    vero#}
+{#                                    excepturi. Repellendus, blanditiis. Incidunt mollitia ex ipsum minus quia nesciunt#}
+{#                                    repudiandae obcaecati tempore laudantium vitae, velit, dolore molestiae soluta#}
+{#                                    voluptate.#}
+{#                                    Doloremque nemo culpa voluptas sit magni.#}
+{#                                </p>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="tab-pane fade" id="electronics-tab-pane" role="tabpanel"#}
+{#                            aria-labelledby="electronics-tab" tabindex="0">#}
+{#                            <div class="content__body">#}
+{#                                <p>#}
+{#                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, placeat quibusdam.#}
+{#                                    Reiciendis veritatis facere, perspiciatis unde nostrum hic deleniti, optio quibusdam#}
+{#                                    quae#}
+{#                                    repellendus laboriosam aut perferendis quis dolore, deserunt illo animi quod tempora#}
+{#                                    adipisci consequatur enim! Aspernatur corporis provident, iusto laborum vero libero#}
+{#                                    similique#}
+{#                                    debitis inventore repellat doloribus. Neque, ipsam!#}
+{#                                </p>#}
+{#                            </div>#}
+{#                        </div>#}
                     </div>
                 </div>
             </div>
@@ -645,690 +355,8 @@
     </section>
     <!-- product detail section end -->
 
-    <!-- Trending Section Start -->
-    <section class="trending__section pt-0">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="section-title">
-                        <h2>Releted Product</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <div class="product__wrapper swiper__pagination">
-                        <div class="swiper trending__Swiper">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <div class="product-card">
-                                        <div class="product__image__wrapper">
-                                            <a href="product-single.html" class="product__image">
-                                                <img src="assets/images/trending/trends-01.png" alt="icon" />
-                                            </a>
-                                            <div class="badge">10%</div>
-                                            <div class="product__actions">
-                                                <a href="#" class="action__btn">
-                                                    <svg width="16" height="14" viewBox="0 0 16 14" fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M13.8931 2.07333C13.5526 1.73267 13.1483 1.46243 12.7033 1.27805C12.2584 1.09368 11.7814 0.998779 11.2998 0.998779C10.8181 0.998779 10.3412 1.09368 9.89618 1.27805C9.45121 1.46243 9.04692 1.73267 8.70642 2.07333L7.99975 2.78L7.29309 2.07333C6.60529 1.38553 5.67244 0.999136 4.69975 0.999136C3.72706 0.999136 2.79422 1.38553 2.10642 2.07333C1.41863 2.76112 1.03223 3.69397 1.03223 4.66666C1.03223 5.63935 1.41863 6.5722 2.10642 7.26L2.81309 7.96666L7.99975 13.1533L13.1864 7.96666L13.8931 7.26C14.2337 6.91949 14.504 6.51521 14.6884 6.07023C14.8727 5.62526 14.9676 5.14832 14.9676 4.66666C14.9676 4.185 14.8727 3.70807 14.6884 3.26309C14.504 2.81812 14.2337 2.41383 13.8931 2.07333V2.07333Z"
-                                                            stroke="#252522" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                    </svg>
-                                                </a>
-                                                <a href="#" data-bs-toggle="modal" data-bs-target="#prod__preview"
-                                                    class="action__btn">
-                                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M0.666992 7.99996C0.666992 7.99996 3.33366 2.66663 8.00033 2.66663C12.667 2.66663 15.3337 7.99996 15.3337 7.99996C15.3337 7.99996 12.667 13.3333 8.00033 13.3333C3.33366 13.3333 0.666992 7.99996 0.666992 7.99996Z"
-                                                            stroke="#252522" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                        <path
-                                                            d="M8 10C9.10457 10 10 9.10457 10 8C10 6.89543 9.10457 6 8 6C6.89543 6 6 6.89543 6 8C6 9.10457 6.89543 10 8 10Z"
-                                                            stroke="#252522" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                    </svg>
-                                                </a>
-                                                <a href="#" class="action__btn">
-                                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M10 9.33329L13.3333 5.99996L10 2.66663"
-                                                            stroke="#252522" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                        <path
-                                                            d="M2.66699 13.3333V8.66667C2.66699 7.95942 2.94794 7.28115 3.44804 6.78105C3.94814 6.28095 4.62641 6 5.33366 6H13.3337"
-                                                            stroke="#252522" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                    </svg>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="product__content">
-                                            <div class="product__rating">
-                                                <ul>
-                                                    <li><i class="fa-solid fa-star"></i></li>
-                                                    <li><i class="fa-solid fa-star"></i></li>
-                                                    <li><i class="fa-solid fa-star"></i></li>
-                                                    <li><i class="fa-solid fa-star"></i></li>
-                                                    <li><i class="fa-regular fa-star"></i></li>
-                                                </ul>
-                                                <div class="total__rating">(321)</div>
-                                            </div>
-                                            <div class="product__title">
-                                                <h5><a href="product-single.html">Tootsie Frooties- Taffy Candy - Bulk
-                                                        Fruit Chews - Fruity Roll Fruity Roll</a></h5>
-                                            </div>
-                                            <div class="product__bottom">
-                                                <div class="product__price">
-                                                    $22.00
-                                                    <del>$22.00</del>
-                                                </div>
-                                                <div class="cart__action__btn">
-                                                    <div class="cart__btn">
-                                                        <a href="#" class="btn btn-outline">Add to cart</a>
-                                                    </div>
-                                                    <div class="quantity cart__quantity">
-                                                        <button type="button" class="decressQnt">
-                                                            <span class="bar"></span>
-                                                        </button>
-                                                        <input class="qnttinput" type="number" disabled value="0"
-                                                            min="01" max="100" />
-                                                        <button type="button" class="incressQnt">
-                                                            <span class="bar"></span>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="product-card">
-                                        <div class="product__image__wrapper">
-                                            <a href="product-single.html" class="product__image">
-                                                <img src="assets/images/trending/trends-02.png" alt="icon" />
-                                            </a>
-                                            <div class="badge">10%</div>
-                                            <div class="product__actions">
-                                                <a href="#" class="action__btn">
-                                                    <svg width="16" height="14" viewBox="0 0 16 14" fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M13.8931 2.07333C13.5526 1.73267 13.1483 1.46243 12.7033 1.27805C12.2584 1.09368 11.7814 0.998779 11.2998 0.998779C10.8181 0.998779 10.3412 1.09368 9.89618 1.27805C9.45121 1.46243 9.04692 1.73267 8.70642 2.07333L7.99975 2.78L7.29309 2.07333C6.60529 1.38553 5.67244 0.999136 4.69975 0.999136C3.72706 0.999136 2.79422 1.38553 2.10642 2.07333C1.41863 2.76112 1.03223 3.69397 1.03223 4.66666C1.03223 5.63935 1.41863 6.5722 2.10642 7.26L2.81309 7.96666L7.99975 13.1533L13.1864 7.96666L13.8931 7.26C14.2337 6.91949 14.504 6.51521 14.6884 6.07023C14.8727 5.62526 14.9676 5.14832 14.9676 4.66666C14.9676 4.185 14.8727 3.70807 14.6884 3.26309C14.504 2.81812 14.2337 2.41383 13.8931 2.07333V2.07333Z"
-                                                            stroke="#252522" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                    </svg>
-                                                </a>
-                                                <a href="#" data-bs-toggle="modal" data-bs-target="#prod__preview"
-                                                    class="action__btn">
-                                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M0.666992 7.99996C0.666992 7.99996 3.33366 2.66663 8.00033 2.66663C12.667 2.66663 15.3337 7.99996 15.3337 7.99996C15.3337 7.99996 12.667 13.3333 8.00033 13.3333C3.33366 13.3333 0.666992 7.99996 0.666992 7.99996Z"
-                                                            stroke="#252522" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                        <path
-                                                            d="M8 10C9.10457 10 10 9.10457 10 8C10 6.89543 9.10457 6 8 6C6.89543 6 6 6.89543 6 8C6 9.10457 6.89543 10 8 10Z"
-                                                            stroke="#252522" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                    </svg>
-                                                </a>
-                                                <a href="#" class="action__btn">
-                                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M10 9.33329L13.3333 5.99996L10 2.66663"
-                                                            stroke="#252522" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                        <path
-                                                            d="M2.66699 13.3333V8.66667C2.66699 7.95942 2.94794 7.28115 3.44804 6.78105C3.94814 6.28095 4.62641 6 5.33366 6H13.3337"
-                                                            stroke="#252522" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                    </svg>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="product__content">
-                                            <div class="product__rating">
-                                                <ul>
-                                                    <li><i class="fa-solid fa-star"></i></li>
-                                                    <li><i class="fa-solid fa-star"></i></li>
-                                                    <li><i class="fa-solid fa-star"></i></li>
-                                                    <li><i class="fa-solid fa-star"></i></li>
-                                                    <li><i class="fa-regular fa-star"></i></li>
-                                                </ul>
-                                                <div class="total__rating">(321)</div>
-                                            </div>
-                                            <div class="product__title">
-                                                <h5><a href="product-single.html">Tootsie Frooties- Taffy Candy - Bulk
-                                                        Fruit Chews - Fruity Roll Fruity Roll</a></h5>
-                                            </div>
-                                            <div class="product__bottom">
-                                                <div class="product__price">
-                                                    $22.00
-                                                    <del>$22.00</del>
-                                                </div>
-                                                <div class="cart__action__btn">
-                                                    <div class="cart__btn">
-                                                        <a href="#" class="btn btn-outline">Add to cart</a>
-                                                    </div>
-                                                    <div class="quantity cart__quantity">
-                                                        <button type="button" class="decressQnt">
-                                                            <span class="bar"></span>
-                                                        </button>
-                                                        <input class="qnttinput" type="number" disabled value="0"
-                                                            min="01" max="100" />
-                                                        <button type="button" class="incressQnt">
-                                                            <span class="bar"></span>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="product-card">
-                                        <div class="product__image__wrapper">
-                                            <a href="product-single.html" class="product__image">
-                                                <img src="assets/images/trending/trends-03.png" alt="icon" />
-                                            </a>
-                                            <div class="badge">10%</div>
-                                            <div class="product__actions">
-                                                <a href="#" class="action__btn">
-                                                    <svg width="16" height="14" viewBox="0 0 16 14" fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M13.8931 2.07333C13.5526 1.73267 13.1483 1.46243 12.7033 1.27805C12.2584 1.09368 11.7814 0.998779 11.2998 0.998779C10.8181 0.998779 10.3412 1.09368 9.89618 1.27805C9.45121 1.46243 9.04692 1.73267 8.70642 2.07333L7.99975 2.78L7.29309 2.07333C6.60529 1.38553 5.67244 0.999136 4.69975 0.999136C3.72706 0.999136 2.79422 1.38553 2.10642 2.07333C1.41863 2.76112 1.03223 3.69397 1.03223 4.66666C1.03223 5.63935 1.41863 6.5722 2.10642 7.26L2.81309 7.96666L7.99975 13.1533L13.1864 7.96666L13.8931 7.26C14.2337 6.91949 14.504 6.51521 14.6884 6.07023C14.8727 5.62526 14.9676 5.14832 14.9676 4.66666C14.9676 4.185 14.8727 3.70807 14.6884 3.26309C14.504 2.81812 14.2337 2.41383 13.8931 2.07333V2.07333Z"
-                                                            stroke="#252522" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                    </svg>
-                                                </a>
-                                                <a href="#" data-bs-toggle="modal" data-bs-target="#prod__preview"
-                                                    class="action__btn">
-                                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M0.666992 7.99996C0.666992 7.99996 3.33366 2.66663 8.00033 2.66663C12.667 2.66663 15.3337 7.99996 15.3337 7.99996C15.3337 7.99996 12.667 13.3333 8.00033 13.3333C3.33366 13.3333 0.666992 7.99996 0.666992 7.99996Z"
-                                                            stroke="#252522" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                        <path
-                                                            d="M8 10C9.10457 10 10 9.10457 10 8C10 6.89543 9.10457 6 8 6C6.89543 6 6 6.89543 6 8C6 9.10457 6.89543 10 8 10Z"
-                                                            stroke="#252522" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                    </svg>
-                                                </a>
-                                                <a href="#" class="action__btn">
-                                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M10 9.33329L13.3333 5.99996L10 2.66663"
-                                                            stroke="#252522" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                        <path
-                                                            d="M2.66699 13.3333V8.66667C2.66699 7.95942 2.94794 7.28115 3.44804 6.78105C3.94814 6.28095 4.62641 6 5.33366 6H13.3337"
-                                                            stroke="#252522" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                    </svg>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="product__content">
-                                            <div class="product__rating">
-                                                <ul>
-                                                    <li><i class="fa-solid fa-star"></i></li>
-                                                    <li><i class="fa-solid fa-star"></i></li>
-                                                    <li><i class="fa-solid fa-star"></i></li>
-                                                    <li><i class="fa-solid fa-star"></i></li>
-                                                    <li><i class="fa-regular fa-star"></i></li>
-                                                </ul>
-                                                <div class="total__rating">(321)</div>
-                                            </div>
-                                            <div class="product__title">
-                                                <h5><a href="product-single.html">Tootsie Frooties- Taffy Candy - Bulk
-                                                        Fruit Chews - Fruity Roll Fruity Roll</a></h5>
-                                            </div>
-                                            <div class="product__bottom">
-                                                <div class="product__price">
-                                                    $22.00
-                                                    <del>$22.00</del>
-                                                </div>
-                                                <div class="cart__action__btn">
-                                                    <div class="cart__btn">
-                                                        <a href="#" class="btn btn-outline">Add to cart</a>
-                                                    </div>
-                                                    <div class="quantity cart__quantity">
-                                                        <button type="button" class="decressQnt">
-                                                            <span class="bar"></span>
-                                                        </button>
-                                                        <input class="qnttinput" type="number" disabled value="0"
-                                                            min="01" max="100" />
-                                                        <button type="button" class="incressQnt">
-                                                            <span class="bar"></span>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="product-card">
-                                        <div class="product__image__wrapper">
-                                            <a href="product-single.html" class="product__image">
-                                                <img src="assets/images/trending/trends-04.png" alt="icon" />
-                                            </a>
-                                            <div class="badge">10%</div>
-                                            <div class="product__actions">
-                                                <a href="#" class="action__btn">
-                                                    <svg width="16" height="14" viewBox="0 0 16 14" fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M13.8931 2.07333C13.5526 1.73267 13.1483 1.46243 12.7033 1.27805C12.2584 1.09368 11.7814 0.998779 11.2998 0.998779C10.8181 0.998779 10.3412 1.09368 9.89618 1.27805C9.45121 1.46243 9.04692 1.73267 8.70642 2.07333L7.99975 2.78L7.29309 2.07333C6.60529 1.38553 5.67244 0.999136 4.69975 0.999136C3.72706 0.999136 2.79422 1.38553 2.10642 2.07333C1.41863 2.76112 1.03223 3.69397 1.03223 4.66666C1.03223 5.63935 1.41863 6.5722 2.10642 7.26L2.81309 7.96666L7.99975 13.1533L13.1864 7.96666L13.8931 7.26C14.2337 6.91949 14.504 6.51521 14.6884 6.07023C14.8727 5.62526 14.9676 5.14832 14.9676 4.66666C14.9676 4.185 14.8727 3.70807 14.6884 3.26309C14.504 2.81812 14.2337 2.41383 13.8931 2.07333V2.07333Z"
-                                                            stroke="#252522" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                    </svg>
-                                                </a>
-                                                <a href="#" data-bs-toggle="modal" data-bs-target="#prod__preview"
-                                                    class="action__btn">
-                                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M0.666992 7.99996C0.666992 7.99996 3.33366 2.66663 8.00033 2.66663C12.667 2.66663 15.3337 7.99996 15.3337 7.99996C15.3337 7.99996 12.667 13.3333 8.00033 13.3333C3.33366 13.3333 0.666992 7.99996 0.666992 7.99996Z"
-                                                            stroke="#252522" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                        <path
-                                                            d="M8 10C9.10457 10 10 9.10457 10 8C10 6.89543 9.10457 6 8 6C6.89543 6 6 6.89543 6 8C6 9.10457 6.89543 10 8 10Z"
-                                                            stroke="#252522" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                    </svg>
-                                                </a>
-                                                <a href="#" class="action__btn">
-                                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M10 9.33329L13.3333 5.99996L10 2.66663"
-                                                            stroke="#252522" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                        <path
-                                                            d="M2.66699 13.3333V8.66667C2.66699 7.95942 2.94794 7.28115 3.44804 6.78105C3.94814 6.28095 4.62641 6 5.33366 6H13.3337"
-                                                            stroke="#252522" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                    </svg>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="product__content">
-                                            <div class="product__rating">
-                                                <ul>
-                                                    <li><i class="fa-solid fa-star"></i></li>
-                                                    <li><i class="fa-solid fa-star"></i></li>
-                                                    <li><i class="fa-solid fa-star"></i></li>
-                                                    <li><i class="fa-solid fa-star"></i></li>
-                                                    <li><i class="fa-regular fa-star"></i></li>
-                                                </ul>
-                                                <div class="total__rating">(321)</div>
-                                            </div>
-                                            <div class="product__title">
-                                                <h5><a href="product-single.html">Tootsie Frooties- Taffy Candy - Bulk
-                                                        Fruit Chews - Fruity Roll Fruity Roll</a></h5>
-                                            </div>
-                                            <div class="product__bottom">
-                                                <div class="product__price">
-                                                    $22.00
-                                                    <del>$22.00</del>
-                                                </div>
-                                                <div class="cart__action__btn">
-                                                    <div class="cart__btn">
-                                                        <a href="#" class="btn btn-outline">Add to cart</a>
-                                                    </div>
-                                                    <div class="quantity cart__quantity">
-                                                        <button type="button" class="decressQnt">
-                                                            <span class="bar"></span>
-                                                        </button>
-                                                        <input class="qnttinput" type="number" disabled value="0"
-                                                            min="01" max="100" />
-                                                        <button type="button" class="incressQnt">
-                                                            <span class="bar"></span>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="product-card">
-                                        <div class="product__image__wrapper">
-                                            <a href="product-single.html" class="product__image">
-                                                <img src="assets/images/trending/trends-05.png" alt="icon" />
-                                            </a>
-                                            <div class="badge">10%</div>
-                                            <div class="product__actions">
-                                                <a href="#" class="action__btn">
-                                                    <svg width="16" height="14" viewBox="0 0 16 14" fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M13.8931 2.07333C13.5526 1.73267 13.1483 1.46243 12.7033 1.27805C12.2584 1.09368 11.7814 0.998779 11.2998 0.998779C10.8181 0.998779 10.3412 1.09368 9.89618 1.27805C9.45121 1.46243 9.04692 1.73267 8.70642 2.07333L7.99975 2.78L7.29309 2.07333C6.60529 1.38553 5.67244 0.999136 4.69975 0.999136C3.72706 0.999136 2.79422 1.38553 2.10642 2.07333C1.41863 2.76112 1.03223 3.69397 1.03223 4.66666C1.03223 5.63935 1.41863 6.5722 2.10642 7.26L2.81309 7.96666L7.99975 13.1533L13.1864 7.96666L13.8931 7.26C14.2337 6.91949 14.504 6.51521 14.6884 6.07023C14.8727 5.62526 14.9676 5.14832 14.9676 4.66666C14.9676 4.185 14.8727 3.70807 14.6884 3.26309C14.504 2.81812 14.2337 2.41383 13.8931 2.07333V2.07333Z"
-                                                            stroke="#252522" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                    </svg>
-                                                </a>
-                                                <a href="#" data-bs-toggle="modal" data-bs-target="#prod__preview"
-                                                    class="action__btn">
-                                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M0.666992 7.99996C0.666992 7.99996 3.33366 2.66663 8.00033 2.66663C12.667 2.66663 15.3337 7.99996 15.3337 7.99996C15.3337 7.99996 12.667 13.3333 8.00033 13.3333C3.33366 13.3333 0.666992 7.99996 0.666992 7.99996Z"
-                                                            stroke="#252522" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                        <path
-                                                            d="M8 10C9.10457 10 10 9.10457 10 8C10 6.89543 9.10457 6 8 6C6.89543 6 6 6.89543 6 8C6 9.10457 6.89543 10 8 10Z"
-                                                            stroke="#252522" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                    </svg>
-                                                </a>
-                                                <a href="#" class="action__btn">
-                                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M10 9.33329L13.3333 5.99996L10 2.66663"
-                                                            stroke="#252522" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                        <path
-                                                            d="M2.66699 13.3333V8.66667C2.66699 7.95942 2.94794 7.28115 3.44804 6.78105C3.94814 6.28095 4.62641 6 5.33366 6H13.3337"
-                                                            stroke="#252522" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                    </svg>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="product__content">
-                                            <div class="product__rating">
-                                                <ul>
-                                                    <li><i class="fa-solid fa-star"></i></li>
-                                                    <li><i class="fa-solid fa-star"></i></li>
-                                                    <li><i class="fa-solid fa-star"></i></li>
-                                                    <li><i class="fa-solid fa-star"></i></li>
-                                                    <li><i class="fa-regular fa-star"></i></li>
-                                                </ul>
-                                                <div class="total__rating">(321)</div>
-                                            </div>
-                                            <div class="product__title">
-                                                <h5><a href="product-single.html">Tootsie Frooties- Taffy Candy - Bulk
-                                                        Fruit Chews - Fruity Roll Fruity Roll</a></h5>
-                                            </div>
-                                            <div class="product__bottom">
-                                                <div class="product__price">
-                                                    $22.00
-                                                    <del>$22.00</del>
-                                                </div>
-                                                <div class="cart__action__btn">
-                                                    <div class="cart__btn">
-                                                        <a href="#" class="btn btn-outline">Add to cart</a>
-                                                    </div>
-                                                    <div class="quantity cart__quantity">
-                                                        <button type="button" class="decressQnt">
-                                                            <span class="bar"></span>
-                                                        </button>
-                                                        <input class="qnttinput" type="number" disabled value="0"
-                                                            min="01" max="100" />
-                                                        <button type="button" class="incressQnt">
-                                                            <span class="bar"></span>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div class="swiper-slide">
-                                <div class="swiper-button-next">
-                                    <svg width="35" height="16" viewBox="0 0 35 16" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M1 8L34 8" stroke="#D0D5DD" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                        <path d="M27 1L34 8L27 15" stroke="#D0D5DD" stroke-width="2"
-                                            stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg>
-                                </div>
-                            </div>
-                            <div class="swiper-button-prev">
-                                <svg width="23" height="16" viewBox="0 0 23 16" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M22 8H1" stroke="#D0D5DD" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M8 15L1 8L8 1" stroke="#D0D5DD" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-                            </div>
-                            <div class="swiper-pagination"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Trending Section End -->
 
-    <!-- Footer Section Start -->
-    <footer class="footer__section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-12 col-sm-12">
-                    <div class="footer__wrapper">
-                        <div class="footer__widget d-block">
-                            <div class="footer__logo">
-                                <a href="home.html"><img src="assets/images/logo/logo.png" alt="logo" /></a>
-                            </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. At praesent eget mauris felis
-                                scelerisque enim enim, magna.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-3 col-sm-12">
-                    <div class="footer__wrapper">
-                        <div class="footer__widget">
-                            <div class="title">
-                                <h5>Product</h5>
-                            </div>
-                            <ul>
-                                <li><a href="#">Shirt</a></li>
-                                <li>
-                                    <a href="#">Groceries <span class="danger">Hot</span></a>
-                                </li>
-                                <li>
-                                    <a href="#">Computer <span>New</span></a>
-                                </li>
-                                <li><a href="#">Electronics</a></li>
-                                <li><a href="#">Sports</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-3 col-sm-12">
-                    <div class="footer__wrapper">
-                        <div class="footer__widget">
-                            <div class="title">
-                                <h5>Company</h5>
-                            </div>
-                            <ul>
-                                <li><a href="#">About us</a></li>
-                                <li><a href="#">Careers</a></li>
-                                <li><a href="#">News</a></li>
-                                <li><a href="#">Media kit</a></li>
-                                <li><a href="#">Contact</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-3 col-sm-12">
-                    <div class="footer__wrapper">
-                        <div class="footer__widget">
-                            <div class="title">
-                                <h5>Resources</h5>
-                            </div>
-                            <ul>
-                                <li><a href="#">Blog</a></li>
-                                <li>
-                                    <a href="#">Newsletter <span>Best</span></a>
-                                </li>
-                                <li><a href="#">Help centre</a></li>
-                                <li><a href="#">Tutorials</a></li>
-                                <li><a href="#">Support</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-3 col-sm-12">
-                    <div class="footer__wrapper">
-                        <div class="footer__widget">
-                            <div class="title">
-                                <h5>Legal</h5>
-                            </div>
-                            <ul>
-                                <li><a href="#">Terms</a></li>
-                                <li><a href="#">Privacy</a></li>
-                                <li><a href="#">Licenses</a></li>
-                                <li><a href="#">Settings</a></li>
-                                <li><a href="#">Contact</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <!-- Accordion Start -->
-                    <div class="accordion__wrapper">
-                        <div class="accordion accordion-flush" id="accordionFlushExample01">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="flush-heading01">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#flush-collapse01" aria-expanded="false"
-                                        aria-controls="flush-collapse01">
-                                        Product
-                                    </button>
-                                </h2>
-                                <div id="flush-collapse01" class="accordion-collapse collapse"
-                                    aria-labelledby="flush-heading01" data-bs-parent="#accordionFlushExample01">
-                                    <div class="accordion-body">
-                                        <div class="footer__widget">
-                                            <ul>
-                                                <li><a href="#">Shirt</a></li>
-                                                <li>
-                                                    <a href="#">Groceries <span class="danger">Hot</span></a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Computer <span>New</span></a>
-                                                </li>
-                                                <li><a href="#">Electronics</a></li>
-                                                <li><a href="#">Sports</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="flush-heading02">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#flush-collapse02" aria-expanded="false"
-                                        aria-controls="flush-collapse02">
-                                        Company
-                                    </button>
-                                </h2>
-                                <div id="flush-collapse02" class="accordion-collapse collapse"
-                                    aria-labelledby="flush-heading02" data-bs-parent="#accordionFlushExample01">
-                                    <div class="accordion-body">
-                                        <div class="footer__widget">
-                                            <ul>
-                                                <li><a href="#">About us</a></li>
-                                                <li><a href="#">Careers</a></li>
-                                                <li><a href="#">News</a></li>
-                                                <li><a href="#">Media kit</a></li>
-                                                <li><a href="#">Contact</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="flush-heading03">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#flush-collapse03" aria-expanded="false"
-                                        aria-controls="flush-collapse03">
-                                        Resources
-                                    </button>
-                                </h2>
-                                <div id="flush-collapse03" class="accordion-collapse collapse"
-                                    aria-labelledby="flush-heading03" data-bs-parent="#accordionFlushExample01">
-                                    <div class="accordion-body">
-                                        <div class="footer__widget">
-                                            <ul>
-                                                <li><a href="#">Blog</a></li>
-                                                <li>
-                                                    <a href="#">Newsletter <span>Best</span></a>
-                                                </li>
-                                                <li><a href="#">Help centre</a></li>
-                                                <li><a href="#">Tutorials</a></li>
-                                                <li><a href="#">Support</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="flush-heading04">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#flush-collapse04" aria-expanded="false"
-                                        aria-controls="flush-collapse04">
-                                        Legal
-                                    </button>
-                                </h2>
-                                <div id="flush-collapse04" class="accordion-collapse collapse"
-                                    aria-labelledby="flush-heading04" data-bs-parent="#accordionFlushExample01">
-                                    <div class="accordion-body">
-                                        <div class="footer__widget">
-                                            <ul>
-                                                <li><a href="#">Terms</a></li>
-                                                <li><a href="#">Privacy</a></li>
-                                                <li><a href="#">Licenses</a></li>
-                                                <li><a href="#">Settings</a></li>
-                                                <li><a href="#">Contact</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Accordion End -->
-                </div>
-            </div>
-        </div>
-        <div class="footer__bottom">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="footer__content text-center">
-                            <div class="content">
-                                <p>
-                                    &copy; 2022
-                                    <a href="#">SuperMart</a>. All rights reserved
-                                </p>
-                            </div>
-                            <div class="link">
-                                <a href="#"><i class="fa-brands fa-twitter"></i> </a>
-                                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                                <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- Footer Section End -->
 
     <!-- Header Flyout Menu Start -->
     <div class="flyoutMenu">
@@ -1821,7 +849,7 @@
                         <form action="#" class="form__wrapper">
                             <div class="popup__title">
                                 <h2>Forgot password</h2>
-                                <p>No worries, We’ll send you reset your passward.</p>
+                                <p>No worries, We’ll send you reset your password.</p>
                             </div>
                             <div class="form-group">
                                 <label for="email3">Email</label>
@@ -1829,7 +857,7 @@
                                     data-error="Please enter email" placeholder="Enter your email" />
                             </div>
                             <div class="submit__btn">
-                                <button type="submit" class="btn btn-primary mt-0 w-100">Reset Passward</button>
+                                <button type="submit" class="btn btn-primary mt-0 w-100">Reset Password</button>
                             </div>
                             <div class="account__desc">
                                 <div class="account__meta">
@@ -1845,168 +873,168 @@
         </div>
     </div>
     <!-- Forget Modal End -->
+{##}
+{#    <!-- Product Preview Modal Start -->#}
+{#    <div class="modal fade product__modal" id="prod__preview" aria-hidden="true" tabindex="-1">#}
+{#        <div class="modal-dialog modal-dialog-centered">#}
+{#            <div class="modal-content">#}
+{#                <div class="modal-header">#}
+{#                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>#}
+{#                </div>#}
+{#                <div class="modal-body">#}
+{#                    <div class="container">#}
+{#                        <div class="row product-detail align-items-center">#}
+{#                            <div class="col-md-6 col-sm-8 m-auto">#}
+{#                                <div class="product-gallery product-gallery__v2">#}
+{#                                    <div class="product-gallery__main swiper productPreviewSwiper">#}
+{#                                        <div class="swiper-wrapper">#}
+{#                                            <div class="swiper-slide">#}
+{#                                                <div class="gallery-item">#}
+{#                                                    <img src="{{ product.image.url }}" alt="product iamge" />#}
+{#                                                </div>#}
+{#                                            </div>#}
+{#                                            <div class="swiper-slide">#}
+{#                                                <div class="gallery-item">#}
+{#                                                    <img src="{{ product.image.url }}" alt="product iamge" />#}
+{#                                                </div>#}
+{#                                            </div>#}
+{#                                            <div class="swiper-slide">#}
+{#                                                <div class="gallery-item">#}
+{#                                                    <img src="{{ product.image.url }}" alt="product iamge" />#}
+{#                                                </div>#}
+{#                                            </div>#}
+{#                                            <div class="swiper-slide">#}
+{#                                                <div class="gallery-item">#}
+{#                                                    <img src="{{ product.image.url }}" alt="product iamge" />#}
+{#                                                </div>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                    <div class="product-gallery__thumb swiper productPreviewSwiperThumb">#}
+{#                                        <div class="swiper-wrapper">#}
+{#                                            <div class="swiper-slide">#}
+{#                                                <div class="gallery-item">#}
+{#                                                    <img src="{{ product.image.url }}" alt="product iamge" />#}
+{#                                                </div>#}
+{#                                            </div>#}
+{#                                            <div class="swiper-slide">#}
+{#                                                <div class="gallery-item">#}
+{#                                                    <img src="assets/images/products/prod-02.png" alt="product iamge" />#}
+{#                                                </div>#}
+{#                                            </div>#}
+{#                                            <div class="swiper-slide">#}
+{#                                                <div class="gallery-item">#}
+{#                                                    <img src="assets/images/products/prod-03.png" alt="product iamge" />#}
+{#                                                </div>#}
+{#                                            </div>#}
+{#                                            <div class="swiper-slide">#}
+{#                                                <div class="gallery-item">#}
+{#                                                    <img src="assets/images/products/prod-04.png" alt="product iamge" />#}
+{#                                                </div>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
 
-    <!-- Product Preview Modal Start -->
-    <div class="modal fade product__modal" id="prod__preview" aria-hidden="true" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="container">
-                        <div class="row product-detail align-items-center">
-                            <div class="col-md-6 col-sm-8 m-auto">
-                                <div class="product-gallery product-gallery__v2">
-                                    <div class="product-gallery__main swiper productPreviewSwiper">
-                                        <div class="swiper-wrapper">
-                                            <div class="swiper-slide">
-                                                <div class="gallery-item">
-                                                    <img src="assets/images/products/prod-01.png" alt="product iamge" />
-                                                </div>
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <div class="gallery-item">
-                                                    <img src="assets/images/products/prod-02.png" alt="product iamge" />
-                                                </div>
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <div class="gallery-item">
-                                                    <img src="assets/images/products/prod-03.png" alt="product iamge" />
-                                                </div>
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <div class="gallery-item">
-                                                    <img src="assets/images/products/prod-04.png" alt="product iamge" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="product-gallery__thumb swiper productPreviewSwiperThumb">
-                                        <div class="swiper-wrapper">
-                                            <div class="swiper-slide">
-                                                <div class="gallery-item">
-                                                    <img src="assets/images/products/prod-01.png" alt="product iamge" />
-                                                </div>
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <div class="gallery-item">
-                                                    <img src="assets/images/products/prod-02.png" alt="product iamge" />
-                                                </div>
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <div class="gallery-item">
-                                                    <img src="assets/images/products/prod-03.png" alt="product iamge" />
-                                                </div>
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <div class="gallery-item">
-                                                    <img src="assets/images/products/prod-04.png" alt="product iamge" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+{#                            <div class="col-md-6">#}
+{#                                <div class="product-detail__wrapper product-detail__wrapper-v2">#}
+{#                                    <h2 class="product-detail__title">EB 18 Large Cage Free White A Egg</h2>#}
+{#                                    <div class="product-detail__meta">#}
+{#                                        <div class="rating">#}
+{#                                            <ul>#}
+{#                                                <li><i class="fa-solid fa-star"></i></li>#}
+{#                                                <li><i class="fa-solid fa-star"></i></li>#}
+{#                                                <li><i class="fa-solid fa-star"></i></li>#}
+{#                                                <li><i class="fa-regular fa-star"></i></li>#}
+{#                                                <li><i class="fa-regular fa-star"></i></li>#}
+{#                                            </ul>#}
+{#                                            <div class="total__rating">#}
+{#                                                <a href="#">(3,822 ratings)</a>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                        <ul class="right-meta">#}
+{#                                            <li>#}
+{#                                                <div class="stock__item">In-stock</div>#}
+{#                                            </li>#}
+{#                                        </ul>#}
+{#                                    </div>#}
+{#                                    <h3 class="product-detail__price">$15.00</h3>#}
+{#                                    <p class="product-detail__short_desc">#}
+{#                                        There are many variations of passages of Lorem Ipsum and available,majority have#}
+{#                                        suffered alteration in somey form, by injected humour, or randomised words which#}
+{#                                        don't look#}
+{#                                        even slightly believable.#}
+{#                                    </p>#}
+{#                                    <div class="product-detail__attr">#}
+{#                                        <div class="product__attr">#}
+{#                                            <span class="product-detail--stroke">Filter By Color</span>#}
+{#                                            <ul class="product__attr--color">#}
+{#                                                <li>#}
+{#                                                    <input type="radio" name="filterByColor" id="colorGreen"#}
+{#                                                        value="green" />#}
+{#                                                    <label for="colorGreen" data-bg="#12B76A"></label>#}
+{#                                                </li>#}
+{##}
+{#                                                <li>#}
+{#                                                    <input type="radio" name="filterByColor" id="colorYellow"#}
+{#                                                        value="yellow" />#}
+{#                                                    <label for="colorYellow" data-bg="#F1C584"></label>#}
+{#                                                </li>#}
+{#                                            </ul>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{##}
+{#                                    <div class="product-detail__attr">#}
+{#                                        <div class="product__attr">#}
+{#                                            <span class="product-detail--stroke">Size</span>#}
+{#                                            <ul class="product__attr--size">#}
+{#                                                <li>#}
+{#                                                    <input type="radio" name="filterBySize" id="sizeXXL" value="xxl" />#}
+{#                                                    <label for="sizeXXL">XXL</label>#}
+{#                                                </li>#}
+{#                                                <li>#}
+{#                                                    <input type="radio" name="filterBySize" id="sizeXL" value="xl" />#}
+{#                                                    <label for="sizeXL">XL</label>#}
+{#                                                </li>#}
+{#                                                <li>#}
+{#                                                    <input type="radio" name="filterBySize" id="sizeL" value="l" />#}
+{#                                                    <label for="sizeL">L</label>#}
+{#                                                </li>#}
+{#                                                <li>#}
+{#                                                    <input type="radio" name="filterBySize" id="sizeM" value="m" />#}
+{#                                                    <label for="sizeM">M</label>#}
+{#                                                </li>#}
+{#                                                <li>#}
+{#                                                    <input type="radio" name="filterBySize" id="sizeS" value="s" />#}
+{#                                                    <label for="sizeS">S</label>#}
+{#                                                </li>#}
+{#                                                <li>#}
+{#                                                    <input type="radio" name="filterBySize" id="sizeXS" value="xs" />#}
+{#                                                    <label for="sizeXS">XS</label>#}
+{#                                                </li>#}
+{#                                            </ul>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{##}
+{#                                    <div class="product-detail__qty">#}
+{#                                        <span class="product-detail--stroke">quantity</span>#}
+{#                                        <div class="quantity quantity--outline">#}
+{#                                            <button type="button" class="decressQnt">#}
+{#                                                <span class="bar"></span>#}
+{#                                            </button>#}
+{#                                            <input class="qnttinput" type="number" disabled value="0" min="01"#}
+{#                                                max="100" />#}
+{#                                            <button type="button" class="incressQnt">#}
+{#                                                <span class="bar"></span>#}
+{#                                            </button>#}
+{#                                        </div>#}
+{#                                    </div>#}
 
-                            <div class="col-md-6">
-                                <div class="product-detail__wrapper product-detail__wrapper-v2">
-                                    <h2 class="product-detail__title">EB 18 Large Cage Free White A Egg</h2>
-                                    <div class="product-detail__meta">
-                                        <div class="rating">
-                                            <ul>
-                                                <li><i class="fa-solid fa-star"></i></li>
-                                                <li><i class="fa-solid fa-star"></i></li>
-                                                <li><i class="fa-solid fa-star"></i></li>
-                                                <li><i class="fa-regular fa-star"></i></li>
-                                                <li><i class="fa-regular fa-star"></i></li>
-                                            </ul>
-                                            <div class="total__rating">
-                                                <a href="#">(3,822 ratings)</a>
-                                            </div>
-                                        </div>
-                                        <ul class="right-meta">
-                                            <li>
-                                                <div class="stock__item">In-stock</div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <h3 class="product-detail__price">$15.00</h3>
-                                    <p class="product-detail__short_desc">
-                                        There are many variations of passages of Lorem Ipsum and available,majority have
-                                        suffered alteration in somey form, by injected humour, or randomised words which
-                                        don't look
-                                        even slightly believable.
-                                    </p>
-                                    <div class="product-detail__attr">
-                                        <div class="product__attr">
-                                            <span class="product-detail--stroke">Filter By Color</span>
-                                            <ul class="product__attr--color">
-                                                <li>
-                                                    <input type="radio" name="filterByColor" id="colorGreen"
-                                                        value="green" />
-                                                    <label for="colorGreen" data-bg="#12B76A"></label>
-                                                </li>
-
-                                                <li>
-                                                    <input type="radio" name="filterByColor" id="colorYellow"
-                                                        value="yellow" />
-                                                    <label for="colorYellow" data-bg="#F1C584"></label>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                    <div class="product-detail__attr">
-                                        <div class="product__attr">
-                                            <span class="product-detail--stroke">Size</span>
-                                            <ul class="product__attr--size">
-                                                <li>
-                                                    <input type="radio" name="filterBySize" id="sizeXXL" value="xxl" />
-                                                    <label for="sizeXXL">XXL</label>
-                                                </li>
-                                                <li>
-                                                    <input type="radio" name="filterBySize" id="sizeXL" value="xl" />
-                                                    <label for="sizeXL">XL</label>
-                                                </li>
-                                                <li>
-                                                    <input type="radio" name="filterBySize" id="sizeL" value="l" />
-                                                    <label for="sizeL">L</label>
-                                                </li>
-                                                <li>
-                                                    <input type="radio" name="filterBySize" id="sizeM" value="m" />
-                                                    <label for="sizeM">M</label>
-                                                </li>
-                                                <li>
-                                                    <input type="radio" name="filterBySize" id="sizeS" value="s" />
-                                                    <label for="sizeS">S</label>
-                                                </li>
-                                                <li>
-                                                    <input type="radio" name="filterBySize" id="sizeXS" value="xs" />
-                                                    <label for="sizeXS">XS</label>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                    <div class="product-detail__qty">
-                                        <span class="product-detail--stroke">quantity</span>
-                                        <div class="quantity quantity--outline">
-                                            <button type="button" class="decressQnt">
-                                                <span class="bar"></span>
-                                            </button>
-                                            <input class="qnttinput" type="number" disabled value="0" min="01"
-                                                max="100" />
-                                            <button type="button" class="incressQnt">
-                                                <span class="bar"></span>
-                                            </button>
-                                        </div>
-                                    </div>
-
-                                    <div class="product-detail__action">
-                                        <a href="product-single.html" class="btn btn-primary btn-outline w-100">Add to
-                                            Cart</a>
-                                    </div>
+{#                                    <div class="product-detail__action">#}
+{#                                        <a href="product-single.html" class="btn btn-primary btn-outline w-100">Add to#}
+{#                                            Cart</a>#}
+{#                                    </div>#}
                                 </div>
                             </div>
                         </div>
@@ -2015,30 +1043,21 @@
             </div>
         </div>
     </div>
+
+
     <!-- Product Preview Modal End -->
 
-    <!-- Preloader Start -->
-    <div id="preloader">
-        <div id="status"><img src="assets/images/favicon.png" alt="logo" /></div>
-    </div>
-    <!-- Preloader End -->
+{#    <!-- Preloader Start -->#}
+{#    <div id="preloader">#}
+{#        <div id="status"><img src="{% static 'images/favicon.png'%}" alt="logo" /></div>#}
+{#    </div>#}
+{#    <!-- Preloader End -->#}
 
     <!-- Scroll-top -->
-    <button class="scroll-top scroll-to-target" data-target="html">scroll</button>
+    <button class="scroll-top scroll-to-target" data-target="html">Top</button>
     <!-- Scroll-top-end-->
 
-    <!-- JS -->
-    <script src="assets/js/jquery-3.6.0.min.js"></script>
-    <script src="assets/js/popper.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/jquery.fancybox.min.js"></script>
-    <script src="assets/js/jquery.plugin.min.js"></script>
-    <script src="assets/js/jquery.countdown.min.js"></script>
-    <script src="assets/js/counterup.min.js"></script>
-    <script src="assets/js/jquery.waypoints.js"></script>
-    <script src="assets/js/jquery.nice-select.js"></script>
-    <script src="assets/js/swiper-bundle.min.js"></script>
-    <script src="assets/js/scripts.js"></script>
 </body>
+{% endblock %}
 
 </html>

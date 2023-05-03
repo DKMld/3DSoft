@@ -9,7 +9,17 @@ def home_page(request):
 
     new_products = Products.objects.filter().order_by('id')[:10]
     sale_products = Products.objects.filter(discount_percentage__gt=0).order_by('id')[:5]
-    products_in_cart = ProductsCart.objects.filter(user=request.user)
+
+    products_in_cart = None
+    total_price_of_cart = None
+
+    if request.user.is_authenticated:
+        products_in_cart = ProductsCart.objects.filter(user=request.user)
+    print(products_in_cart)
+
+    if request.user.is_authenticated:
+        total_price_of_cart = ProductsCart.total_price(current_user=request.user)
+
 
     context = {
         'user_is_auth': request.user.is_authenticated,
@@ -18,7 +28,9 @@ def home_page(request):
         'new_products': new_products,
         'sale_products': sale_products,
 
+
         'products_in_cart': products_in_cart,
+        'total_cart_price': total_price_of_cart,
 
     }
 
@@ -26,8 +38,7 @@ def home_page(request):
 
 
 def checkout(request):
-
-    return render(request, 'common/checkout.html')
+    return render(request, 'product/product-single.html',)
 
 
 # def product_search(request):
@@ -51,6 +62,8 @@ def checkout(request):
 #         return render(request, 'product_pages/product_search_page.html', context)
 #
 #
+
+
 
 
 def get_current_user_ip():

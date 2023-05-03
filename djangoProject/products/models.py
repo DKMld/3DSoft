@@ -1,6 +1,7 @@
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
+from django.db.models import Max, Min
 
 
 CATEGORY_CHOICES = [
@@ -24,8 +25,8 @@ class Products(models.Model):
     price = models.FloatField(null=True, max_length=10)
 
     in_stock = models.BooleanField(null=True)
-    discount_percentage = models.FloatField(null=True, max_length=10, default=0)
-    quantity = models.CharField(max_length=50, null=True, default=1)
+    discount_percentage = models.FloatField(null=True, max_length=100, default=0)
+    quantity = models.FloatField(null=True, max_length=100, default=1)
 
     image = models.ImageField(null=True, upload_to='product_images', blank=True)
 
@@ -59,4 +60,15 @@ class ProductsLikes(models.Model):
 class ProductsCart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank=False)
     product = models.ForeignKey(Products, on_delete=models.CASCADE, null=False, blank=False)
-    quantity = models.CharField(max_length=50, null=False, blank=False, default=1)
+    quantity = models.FloatField(max_length=50, null=False, blank=False, default=1)
+
+    @staticmethod
+    def total_price(current_user):
+        current_user_products = ProductsCart.objects.filter(user=current_user)
+        total_price_of_cart = 0
+
+        for product in current_user_products:
+            total_price_of_cart += product.quantity * product.product.price
+
+
+        return total_price_of_cart

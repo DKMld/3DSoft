@@ -1,4 +1,6 @@
 {% load static %}
+{% load common_extras %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -2066,7 +2068,7 @@
                                         <a href="#">{{ product.product.product_name }}</a>
                                     </h5>
 
-                                    <h5 class="product__price">{{ product.product.price }} BGN</h5>
+                                    <h5 class="product__price">{{ product.product.price }} lv.</h5>
 
                                 </div>
                                 <div class="shopping-card__content-bottom">
@@ -2075,7 +2077,7 @@
                                             <button type="button" class="decressQnt">
                                                 <span class="bar"></span>
                                             </button>
-                                            <input class="qnttinput" type="number" disabled value="0" min="01" max="100" />
+                                            <input class="qnttinput" type="number" disabled value="1" min="01" max="100" />
                                             <button type="button" class="incressQnt">
                                                 <span class="bar"></span>
                                             </button>
@@ -2109,24 +2111,24 @@
                 <ul class="cart__subtotal">
                     <li>
                         <span class="label">Subtotal</span>
-                        <span class="value">{{ total_cart_price }}</span>
+                        <span class="value">{{ total_cart_price }} lv.</span>
                     </li>
                     <li>
                         <span class="label">Shipping:</span>
-                        <span class="value">$15.22</span>
+                        <span class="value">5.75 lv.</span>
                     </li>
                 </ul>
                 <!-- Cart SubTotal End -->
                 <!-- Total Start -->
                 <div class="cart__total">
                     <h3>Total <span>(Incl. VAT)</span></h3>
-                    <div class="total">$60.22</div>
+                    <div class="total">{{ total_cart_price|sum_two_num:5.75 }} lv.</div>
                 </div>
                 <!-- Total End -->
             </div>
             <!-- Cart Button Start -->
             <div class="cart__btns">
-                <a href="checkout.html" class="btn btn-primary">Go To Checkout</a>
+                <a href="#" class="btn btn-primary">Go To Checkout</a>
                 <a href="#" class="btn btn-outline">Continue shopping</a>
             </div>
             <!-- Cart Button End -->
@@ -2264,6 +2266,7 @@
             </div>
         </div>
     </div>
+
     <!-- SingUp Modal End -->
     <!-- Forget Modal Start -->
     <div class="modal fade popup__modal" id="forget" aria-hidden="true" tabindex="-1">

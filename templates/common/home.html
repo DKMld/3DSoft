@@ -1,9 +1,9 @@
 {% load static %}
 {% load common_extras %}
 
+
 <!DOCTYPE html>
 <html lang="en">
-
 
 
 <head>
@@ -153,14 +153,14 @@
                     <div class="header__menu">
                         <ul class="main__menu">
                             <li class="has__dropdown active">
-                                <a href="#">Home</a>
+                                <a href="{% url 'home_page' %}">Home</a>
                                 <!-- Dropdown -->
-                                <ul class="sub__menu">
-                                    <li><a href="home.html">Home-01</a></li>
+{#                                <ul class="sub__menu">#}
+{#                                    <li><a href="home.html">Home</a></li>#}
 {#                                    <li><a href="home-02.html">Home-02</a></li>#}
 {#                                    <li><a href="home-03.html">Home-03</a></li>#}
 {#                                    <li><a href="home-04.html">Home-04</a></li>#}
-                                </ul>
+{#                                </ul>#}
                                 <!-- Dropdown -->
                             </li>
 {#                            <li class="has__dropdown position-static">#}
@@ -347,7 +347,7 @@
                                     Ice-Cream
                                 </h5>
                                 <div class="shop__btn">
-                                    <a href="../product/product.html" class="btn btn-primary">Shop now</a>
+                                    <a href="{% url 'products_page' 'default' %}" class="btn btn-primary">Shop now</a>
                                 </div>
                             </div>
                             <div class="banner__ads__image">
@@ -1878,7 +1878,7 @@
             <div class="flyout__inner">
                 <div class="menu__header-top">
                     <div class="brand__logo">
-                        <a href="home.html"><img src="assets/images/logo/logo.png" alt="logo" /></a>
+                        <a href="home.html"><img src="{% static 'images/logo/logo.png' %}" alt="logo" /></a>
                     </div>
                     <!-- Close -->
                     <div class="closest__btn action__btn">
@@ -1891,6 +1891,8 @@
                         <!-- Close -->
                     </div>
                 </div>
+
+
                 <!-- Search Form -->
                 <form action="search.html" method="post" class="search__form full__width">
                     <input type="search" class="form-control" name="search" placeholder="What are you looking for..." />
@@ -1899,19 +1901,22 @@
                     </button>
                 </form>
                 <!-- Search Form -->
-                <div class="flyout__menu">
-                    <ul class="flyout-main__menu">
-                        <li class="has__dropdown">
-                            <a href="#" class="nav__link active">Home</a>
-                            <!-- Dropdown -->
-                            <ul class="sub__menu">
-                                <li><a href="home.html">Home-01</a></li>
 
-                            </ul>
-                            <!-- Dropdown -->
-                        </li>
-                        <li class="has__dropdown">
-                            <a href="#" class="nav__link">Collection</a>
+
+
+{#                <div class="flyout__menu">#}
+{#                    <ul class="flyout-main__menu">#}
+{#                        <li class="has__dropdown">#}
+{#                            <a href="#" class="nav__link active">Home</a>#}
+{#                            <!-- Dropdown -->#}
+{#                            <ul class="sub__menu">#}
+{#                                <li><a href="home.html">Home-01</a></li>#}
+{##}
+{#                            </ul>#}
+{#                            <!-- Dropdown -->#}
+{#                        </li>#}
+{#                        <li class="has__dropdown">#}
+{#                            <a href="#" class="nav__link">Collection</a>#}
                             <!-- Dropdown -->
 {#                            <ul class="sub__menu">#}
 {#                                <li class="has__dropdown">#}
@@ -2051,9 +2056,6 @@
                     <h3>Price</h3>
                 </div>
                 <div class="cart__items">
-                    <!-- Shopping Cart Item Start -->
-
-
 
                     <!-- Shopping Cart Item Start -->
                     {% if products_in_cart %}
@@ -2137,6 +2139,7 @@
     {% endif %}
     <!-- Header FlyoutCart End -->
 
+    {% block sign_up_in %}
     <!-- Login Modal Start -->
     <div class="modal fade popup__modal" id="login" aria-hidden="true" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
@@ -2268,6 +2271,7 @@
     </div>
 
     <!-- SingUp Modal End -->
+
     <!-- Forget Modal Start -->
     <div class="modal fade popup__modal" id="forget" aria-hidden="true" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
@@ -2314,6 +2318,7 @@
         </div>
     </div>
     <!-- Forget Modal End -->
+    {% endblock %}
 
     <!-- Product Preview Modal Start -->
     <div class="modal fade product__modal" id="prod__preview" aria-hidden="true" tabindex="-1">

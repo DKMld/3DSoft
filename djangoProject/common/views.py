@@ -20,7 +20,6 @@ def home_page(request):
     if request.user.is_authenticated:
         total_price_of_cart = ProductsCart.total_price(current_user=request.user)
 
-
     context = {
         'user_is_auth': request.user.is_authenticated,
         'current_user_location': current_user_location['country'],

@@ -28,7 +28,6 @@ def product_detail(request, product_slug):
 
 def product_page(request, sorting):
 
-
     products_in_cart = None
     total_price_of_cart = None
 
@@ -38,13 +37,15 @@ def product_page(request, sorting):
     if request.user.is_authenticated:
         total_price_of_cart = ProductsCart.total_price(current_user=request.user)
 
+    sort_choice = product_page_sorted(sorting)
 
-
-    print(product_page_sorted(sorting))
     context = {
         'user_is_auth': request.user.is_authenticated,
         'products_in_cart': products_in_cart,
         'total_cart_price': total_price_of_cart,
+
+        'sorted_products_query': sort_choice[0],
+        'sorting': sort_choice[1],
     }
     return render(request, 'common/product.html', context)
 
@@ -69,28 +70,46 @@ def product_page(request, sorting):
 
 
 def product_add_to_cart(request, product_slug):
-    print(product_slug)
-    Products.objects.filter(discount_percentage_gte=0)
+    pass
 
 
 def product_page_sorted(sorting):
     sort_dict = {
-        'default': 'default',
-        'price_low_to_high': '-price',
-        'price_high_to_low': 'price',
-        'in_stock': 'in_stock',
-        'out_of_stock': '-in_stock',
-        'sale': 'discount_percentage_gte=0'
+        'default': 'Default',
+        'price_l2h': 'Price L to H',
+        'price_h2l': 'Price H to L',
+        'in_stock': 'In Stock',
+        'out_of_stock': 'Out of Stock',
+        'on_sale': 'On Sale'
     }
     sort_dict_as_list = list(sort_dict.items())
 
     query = None
+    sort_choice = None
 
     if sorting in sort_dict.keys():
         if sorting == sort_dict_as_list[0][0]:
             query = Products.objects.all()
+            sort_choice = sort_dict_as_list[0][1]
 
         elif sorting == sort_dict_as_list[1][0]:
-            query = Products.objects.all().order_by(sort_dict_as_list[1][1])
-            print(sort_dict_as_list[1][0])
+            query = Products.objects.all().order_by('-price')
+            sort_choice = sort_dict_as_list[1][1]
 
+        elif sorting == sort_dict_as_list[2][0]:
+            query = Products.objects.all().order_by('price')
+            sort_choice = sort_dict_as_list[2][1]
+
+        elif sorting == sort_dict_as_list[3][0]:
+            query = Products.objects.filter(in_stock=True)
+            sort_choice = sort_dict_as_list[3][1]
+
+        elif sorting == sort_dict_as_list[4][0]:
+            query = Products.objects.filter(in_stock=False)
+            sort_choice = sort_dict_as_list[4][1]
+
+        elif sorting == sort_dict_as_list[5][0]:
+            query = Products.objects.filter(discount_percentage__gt=0)
+            sort_choice = sort_dict_as_list[5][1]
+
+    return query, sort_choice

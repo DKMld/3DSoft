@@ -9,17 +9,21 @@ def product_detail(request, product_slug):
 
     products_in_cart = None
     total_price_of_cart = None
+    number_of_products_in_cart = None
 
     if request.user.is_authenticated:
-        products_in_cart = ProductsCart.objects.filter(user=request.user)
+        user = request.user
 
-    if request.user.is_authenticated:
-        total_price_of_cart = ProductsCart.total_price(current_user=request.user)
+        products_in_cart = ProductsCart.objects.filter(user=user)
+        number_of_products_in_cart = ProductsCart.total_products_in_user_cart(user)
+        total_price_of_cart = ProductsCart.total_price(user)
 
     context = {
         'user_is_auth': request.user.is_authenticated,
         'product': product,
+
         'products_in_cart': products_in_cart,
+        'number_of_products_in_cart': number_of_products_in_cart,
         'total_cart_price': total_price_of_cart,
     }
 
@@ -30,23 +34,28 @@ def product_page(request, sorting):
 
     products_in_cart = None
     total_price_of_cart = None
+    number_of_products_in_cart = None
 
     if request.user.is_authenticated:
-        products_in_cart = ProductsCart.objects.filter(user=request.user)
+        user = request.user
 
-    if request.user.is_authenticated:
-        total_price_of_cart = ProductsCart.total_price(current_user=request.user)
+        products_in_cart = ProductsCart.objects.filter(user)
+        total_price_of_cart = ProductsCart.total_price(user)
+        number_of_products_in_cart = ProductsCart.total_products_in_user_cart(user)
 
     sort_choice = product_page_sorted(sorting)
 
     context = {
         'user_is_auth': request.user.is_authenticated,
+
         'products_in_cart': products_in_cart,
         'total_cart_price': total_price_of_cart,
+        'number_of_products_in_cart': number_of_products_in_cart,
 
         'sorted_products_query': sort_choice[0],
         'sorting': sort_choice[1],
     }
+
     return render(request, 'common/product.html', context)
 
 

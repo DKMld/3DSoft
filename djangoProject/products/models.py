@@ -64,11 +64,20 @@ class ProductsCart(models.Model):
 
     @staticmethod
     def total_price(current_user):
-        current_user_products = ProductsCart.objects.filter(user=current_user)
+        current_user_products_price = ProductsCart.objects.filter(user=current_user)
         total_price_of_cart = 0
 
-        for product in current_user_products:
+        for product in current_user_products_price:
             total_price_of_cart += product.quantity * product.product.price
 
-
         return total_price_of_cart
+
+    @staticmethod
+    def total_products_in_user_cart(current_user):
+        current_user_products_num = ProductsCart.objects.filter(user=current_user).count()
+
+        if current_user_products_num == 0:
+            return 0
+        else:
+            return current_user_products_num
+

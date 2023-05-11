@@ -5,16 +5,16 @@ from django.db.models import Max, Min
 
 
 CATEGORY_CHOICES = [
-    ('airsoft', 'Airsoft'),
-    ('mountain bike', 'Mountain bike'),
-    ('other', 'Other'),
+    ('airsoft', 'airsoft'),
+    ('mountain_bike', 'mountain_bike'),
+    ('other', 'other'),
 ]
 
 
 SECONDARY_CATEGORY_CHOICES = [
-    ('weapon attachments', 'Weapon attachments'),
-    ('gear accessories', 'Gear accessories'),
-    ('other', 'Other'),
+    ('weapon_attachments', 'weapon_attachments'),
+    ('gear_accessories', 'gear_accessories'),
+    ('other', 'other'),
 ]
 
 

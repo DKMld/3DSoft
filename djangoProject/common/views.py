@@ -21,8 +21,6 @@ def home_page(request):
         total_price_of_cart = ProductsCart.total_price(current_user=user)
         number_of_products_in_cart = ProductsCart.total_products_in_user_cart(user)
 
-
-
     context = {
         'user_is_auth': request.user.is_authenticated,
         'current_user_location': current_user_location['country'],

@@ -56,11 +56,13 @@ def product_page(request, category, sub_category, sorting):
 
     total_pages = selected_product_page.paginator.page_range
 
-
+    if not selected_product_page.has_next():
+        get_selected_product_page = 1
 
     context = {
         'products': selected_product_page,
         'total_pages': total_pages,
+        'current_page': get_selected_product_page,
 
         'user_is_auth': request.user.is_authenticated,
 
@@ -148,11 +150,11 @@ def product_page_sorted(sorting, products):
             sort_choice = sort_dict_as_list[0][1]
 
         elif sorting == sort_dict_as_list[1][0]:
-            query = query.all().order_by('-price')
+            query = query.all().order_by('price')
             sort_choice = sort_dict_as_list[1][1]
 
         elif sorting == sort_dict_as_list[2][0]:
-            query = query.all().order_by('price')
+            query = query.all().order_by('-price')
             sort_choice = sort_dict_as_list[2][1]
 
         elif sorting == sort_dict_as_list[3][0]:

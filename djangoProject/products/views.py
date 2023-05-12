@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator
 from django.shortcuts import render, redirect
 
 from djangoProject.products.models import Products, ProductsLikes, ProductsCart
@@ -47,9 +48,19 @@ def product_page(request, category, sub_category, sorting):
 
     product_category = product_page_category(category, sub_category)
     sort_choice = product_page_sorted(sorting, product_category)
-    print(sort_choice[0])
+
+    paginated_page = product_paginated_page(sort_choice[0])
+    get_selected_product_page = request.GET.get('page')
+
+    selected_product_page = paginated_page.page(get_selected_product_page)
+
+    total_pages = selected_product_page.paginator.page_range
+
+
+
     context = {
-        'products': sort_choice[0],
+        'products': selected_product_page,
+        'total_pages': total_pages,
 
         'user_is_auth': request.user.is_authenticated,
 
@@ -92,6 +103,11 @@ def product_add_to_cart(request, product_slug):
     pass
 
 
+def product_paginated_page(final_query):
+    paginated_page = Paginator(final_query, 5)
+    return paginated_page
+
+
 def product_page_category(category, sub_category):
     """ product_page_category takes
     the category and sub_category which the user chooses
@@ -102,7 +118,7 @@ def product_page_category(category, sub_category):
         query = Products.objects.all()
     query = Products.objects.filter(category=category, secondary_category=sub_category).all()
 
-    return query
+    return query.all()
 
 
 def product_page_sorted(sorting, products):
@@ -117,7 +133,8 @@ def product_page_sorted(sorting, products):
         'price_h2l': 'Price H to L',
         'in_stock': 'In Stock',
         'out_of_stock': 'Out of Stock',
-        'on_sale': 'On Sale'
+        'on_sale': 'On Sale',
+        'None': 'Default',
     }
 
     sort_dict_as_list = list(sort_dict.items())
@@ -150,4 +167,10 @@ def product_page_sorted(sorting, products):
             query = query.filter(discount_percentage__gt=0)
             sort_choice = sort_dict_as_list[5][1]
 
-    return query, sort_choice
+        # edge cases !!
+    elif sorting not in sort_dict.keys():
+        query = query.all()
+        sort_choice = sort_dict_as_list[6][1]
+        # edge cases !!
+
+    return query.all(), sort_choice

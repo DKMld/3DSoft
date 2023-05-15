@@ -25,8 +25,6 @@ def product_detail(request, product_slug):
         for prod in products_in_cart:
             print(prod.product.product_name)
 
-
-
     context = {
         'user_is_auth': request.user.is_authenticated,
         'product': product,
@@ -121,22 +119,20 @@ def product_add_to_cart(request, product_slug):
         cart_item = ProductsCart(user=user, product=product, quantity=1)
         cart_item.save()
 
-
-
-
-
-
-
-
-    # if user_cart.product == product:
-    #     user_cart.product.quantity += 1
-    #     user_cart.
-    #
-    # elif not user_cart.product == product:
-    #     user_cart.create(user=user, product=product, quantity=1)
-
     return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
 
+
+def product_remove_from_cart(request, product_slug):
+    user = request.user
+    product = get_object_or_404(Products, slug=product_slug)
+
+    cart_item = ProductsCart.objects.filter(user=user, product=product).first()
+
+    if cart_item:
+        cart_item.delete()
+        print(123)
+
+    return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
 
 def product_paginated_page(final_query):
     """ product_paginated_page gets the final

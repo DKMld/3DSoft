@@ -69,13 +69,12 @@ class ProductsCart(models.Model):
         total_price_of_cart = 0
 
         for product in current_user_products_price:
+
             if product.product.discount_percentage != 0:
                 total_price_of_cart += product.product.discounted_price() * product.quantity
 
             elif product.product.discount_percentage == 0:
                 total_price_of_cart += product.quantity * product.product.price
-
-
 
         return total_price_of_cart
 

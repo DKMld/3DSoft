@@ -49,6 +49,7 @@ class Products(models.Model):
         price = self.price - discounted_price
         return price
 
+
 class ProductsLikes(models.Model):
     product = models.ForeignKey(Products, on_delete=models.CASCADE, null=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -68,7 +69,13 @@ class ProductsCart(models.Model):
         total_price_of_cart = 0
 
         for product in current_user_products_price:
-            total_price_of_cart += product.quantity * product.product.price
+            if product.product.discount_percentage != 0:
+                total_price_of_cart += product.product.discounted_price() * product.quantity
+
+            elif product.product.discount_percentage == 0:
+                total_price_of_cart += product.quantity * product.product.price
+
+
 
         return total_price_of_cart
 

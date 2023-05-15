@@ -1,5 +1,6 @@
 from django.core.paginator import Paginator
-from django.shortcuts import render, redirect
+from django.http import HttpResponseRedirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 from djangoProject.products.models import Products, ProductsLikes, ProductsCart
 
@@ -19,6 +20,12 @@ def product_detail(request, product_slug):
         products_in_cart = ProductsCart.objects.filter(user=user)
         number_of_products_in_cart = ProductsCart.total_products_in_user_cart(user)
         total_price_of_cart = ProductsCart.total_price(user)
+
+    if products_in_cart:
+        for prod in products_in_cart:
+            print(prod.product.product_name)
+
+
 
     context = {
         'user_is_auth': request.user.is_authenticated,
@@ -102,10 +109,39 @@ def product_add_to_cart(request, product_slug):
     """ product_add_to_cart takes the product's slug
     which the user selected and adds it to the current user cart"""
 
-    pass
+    user = request.user
+    product = get_object_or_404(Products, slug=product_slug)
+
+    cart_item = ProductsCart.objects.filter(user=user, product=product).first()
+
+    if cart_item:
+        cart_item.quantity += 1
+        cart_item.save()
+    else:
+        cart_item = ProductsCart(user=user, product=product, quantity=1)
+        cart_item.save()
+
+
+
+
+
+
+
+
+    # if user_cart.product == product:
+    #     user_cart.product.quantity += 1
+    #     user_cart.
+    #
+    # elif not user_cart.product == product:
+    #     user_cart.create(user=user, product=product, quantity=1)
+
+    return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
 
 
 def product_paginated_page(final_query):
+    """ product_paginated_page gets the final
+    product query and paginate it by the number chosen below """
+
     paginated_page = Paginator(final_query, 5)
     return paginated_page
 
@@ -114,6 +150,7 @@ def product_page_category(category, sub_category):
     """ product_page_category takes
     the category and sub_category which the user chooses
     and returns a product query based on that """
+
     query = None
 
     if category == 'all' and sub_category == 'all':

@@ -12,10 +12,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config('SECRET_KEY')
 
-TREBLLE_INFO = {
-    'api_key': config('treblle_api_key'),
-    'project_id': config('treblle_project_id'),
-}
+# TREBLLE_INFO = {
+#     'api_key': config('treblle_api_key'),
+#     'project_id': config('treblle_project_id'),
+# }
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -34,7 +34,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # 'livereload',
-    'treblle',
+    # 'treblle',
 
     'djangoProject.common',
     'djangoProject.accounts',
@@ -52,7 +52,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
     # 'livereload.middleware.LiveReloadScript',
-    'treblle.middleware.TreblleMiddleware',
+    # 'treblle.middleware.TreblleMiddleware',
 ]
 
 ROOT_URLCONF = 'djangoProject.urls'

@@ -1,7 +1,5 @@
 from django.core.paginator import Paginator
-from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
-
 from djangoProject.products.models import Products, ProductsLikes, ProductsCart
 
 
@@ -55,7 +53,10 @@ def product_page(request, category, sub_category, sorting):
     sort_choice = product_page_sorted(sorting, product_category)
 
     paginated_page = product_paginated_page(sort_choice[0])
-    get_selected_product_page = request.GET.get('page')
+
+    get_selected_product_page = request.GET.get('page', None)
+    if get_selected_product_page is None or get_selected_product_page == "":
+        get_selected_product_page = 1
 
     selected_product_page = paginated_page.page(get_selected_product_page)
 
@@ -68,6 +69,7 @@ def product_page(request, category, sub_category, sorting):
         'products': selected_product_page,
         'total_pages': total_pages,
         'current_page': get_selected_product_page,
+
 
         'user_is_auth': request.user.is_authenticated,
 
@@ -123,6 +125,9 @@ def product_add_to_cart(request, product_slug):
 
 
 def product_remove_from_cart(request, product_slug):
+    """ product_remove_from_cart removes the
+    chosen product from the current user cart."""
+
     user = request.user
     product = get_object_or_404(Products, slug=product_slug)
 
@@ -130,9 +135,9 @@ def product_remove_from_cart(request, product_slug):
 
     if cart_item:
         cart_item.delete()
-        print(123)
 
     return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
+
 
 def product_paginated_page(final_query):
     """ product_paginated_page gets the final
@@ -151,7 +156,8 @@ def product_page_category(category, sub_category):
 
     if category == 'all' and sub_category == 'all':
         query = Products.objects.all()
-    query = Products.objects.filter(category=category, secondary_category=sub_category).all()
+    else:
+        query = Products.objects.filter(category=category, secondary_category=sub_category).all()
 
     return query.all()
 
@@ -209,3 +215,65 @@ def product_page_sorted(sorting, products):
         # edge cases !!
 
     return query.all(), sort_choice
+
+
+def product_search(request, category, sub_category, sorting):
+    """ product_search takes category=all, sub_category=all, sorting=default as parameters and search the
+    database for products that contains the search_input in their name.
+    Then returns the search_page with all the products ."""
+
+    products_in_cart = None
+    total_price_of_cart = None
+    number_of_products_in_cart = None
+
+    if request.user.is_authenticated:
+        user = request.user
+
+        products_in_cart = ProductsCart.objects.filter(user=user)
+        total_price_of_cart = ProductsCart.total_price(user)
+        number_of_products_in_cart = ProductsCart.total_products_in_user_cart(user)
+
+    search_input = request.GET.get('search_input', None)
+
+    page_number = request.GET.get('page', 1)
+    product_category = product_page_category(category, sub_category).filter(product_name__icontains=search_input)
+    sort_choice = product_page_sorted(sorting, product_category)
+
+    paginated_page = product_paginated_page(sort_choice[0])
+
+    if page_number is None or page_number == "":
+        page_number = 1
+    selected_product_page = paginated_page.page(page_number)
+
+    total_pages = selected_product_page.paginator.page_range
+
+    if not selected_product_page.has_next():
+        page_number = 1
+
+    # Generate the query parameters for pagination links
+    # query_params = request.GET.copy()
+    # if 'page' in query_params:
+    #     del query_params['page']
+    # query_string = query_params.urlencode()
+
+    context = {
+        'products': selected_product_page,
+        'total_pages': total_pages,
+        'current_page': page_number,
+
+        'user_is_auth': request.user.is_authenticated,
+
+        'products_in_cart': products_in_cart,
+        'total_cart_price': total_price_of_cart,
+        'number_of_products_in_cart': number_of_products_in_cart,
+
+        'sorted_products_query': sort_choice[0],
+        'sorting': sort_choice[1],
+        'category': category,
+        'sub_category': sub_category,
+
+        'search_input': search_input,
+        # 'query_string': query_string,
+    }
+
+    return render(request, 'common/search_page.html', context)

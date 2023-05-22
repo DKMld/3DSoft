@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.shortcuts import render, redirect, get_object_or_404
 from djangoProject.products.models import Products, ProductsLikes, ProductsCart
@@ -11,6 +12,7 @@ def product_detail(request, product_slug):
     products_in_cart = None
     total_price_of_cart = None
     number_of_products_in_cart = None
+    product_liked = None
 
     if request.user.is_authenticated:
         user = request.user
@@ -19,9 +21,7 @@ def product_detail(request, product_slug):
         number_of_products_in_cart = ProductsCart.total_products_in_user_cart(user)
         total_price_of_cart = ProductsCart.total_price(user)
 
-    if products_in_cart:
-        for prod in products_in_cart:
-            print(prod.product.product_name)
+        product_liked = ProductsLikes.objects.filter(product=product, user=request.user).first()
 
     context = {
         'user_is_auth': request.user.is_authenticated,
@@ -30,6 +30,8 @@ def product_detail(request, product_slug):
         'products_in_cart': products_in_cart,
         'number_of_products_in_cart': number_of_products_in_cart,
         'total_cart_price': total_price_of_cart,
+
+        'product_liked': product_liked,
     }
 
     return render(request, 'product/product-single.html', context)
@@ -54,9 +56,7 @@ def product_page(request, category, sub_category, sorting):
 
     paginated_page = product_paginated_page(sort_choice[0])
 
-    get_selected_product_page = request.GET.get('page', None)
-    if get_selected_product_page is None or get_selected_product_page == "":
-        get_selected_product_page = 1
+    get_selected_product_page = request.GET.get('page', 1)
 
     selected_product_page = paginated_page.page(get_selected_product_page)
 
@@ -69,7 +69,6 @@ def product_page(request, category, sub_category, sorting):
         'products': selected_product_page,
         'total_pages': total_pages,
         'current_page': get_selected_product_page,
-
 
         'user_is_auth': request.user.is_authenticated,
 
@@ -86,25 +85,32 @@ def product_page(request, category, sub_category, sorting):
     return render(request, 'common/product.html', context)
 
 
-# def product_like(request, pk):
-#     product = Products.objects.filter(pk=pk).get()
-#     user = request.user
-#     product_liked_by_user = ProductsLikes.objects.filter(product=product, user=user)
-#
-#     if not product_liked_by_user:
-#         like = ProductsLikes.objects.create(user=user, product=product)
-#         like.save()
-#
+@login_required
+def product_like(request, product_slug):
+    user = request.user
+
+    product = Products.objects.filter(slug=product_slug).get()
+
+    user_liked_product = ProductsLikes.objects.filter(user=user, product=product)
+
+    if user_liked_product:
+        user_liked_product.delete()
+    else:
+        ProductsLikes.objects.create(user=user, product=product)
+
+    # Redirect to the product URL after performing the like/unlike action
+    return redirect('product_detail', product_slug)
+
+
+# def get_product_url(request, product_slug):
+#     referer = request.META.get('HTTP_REFERER')
+#     if referer:
+#         return referer + f'#photo-{product_slug}'
 #     else:
-#         ProductsLikes.objects.filter(user=user, product=product).delete()
-#
-#     return redirect(get_product_url(request, product_id=product.pk))
-#
-#
-# def get_product_url(request, product_id):
-#     return request.META['HTTP_REFERER'] + f'#photo-{product_id}'
+#         # Provide a default URL in case the referer is not available
+#         return '/products/' + product_slug
 
-
+@login_required
 def product_add_to_cart(request, product_slug):
     """ product_add_to_cart takes the product's slug
     which the user selected and adds it to the current user cart"""
@@ -124,6 +130,7 @@ def product_add_to_cart(request, product_slug):
     return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
 
 
+@login_required
 def product_remove_from_cart(request, product_slug):
     """ product_remove_from_cart removes the
     chosen product from the current user cart."""
@@ -241,8 +248,6 @@ def product_search(request, category, sub_category, sorting):
 
     paginated_page = product_paginated_page(sort_choice[0])
 
-    if page_number is None or page_number == "":
-        page_number = 1
     selected_product_page = paginated_page.page(page_number)
 
     total_pages = selected_product_page.paginator.page_range
@@ -277,3 +282,4 @@ def product_search(request, category, sub_category, sorting):
     }
 
     return render(request, 'common/search_page.html', context)
+

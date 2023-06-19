@@ -82,7 +82,7 @@ def product_page(request, category, sub_category, sorting):
         'sub_category': sub_category,
     }
 
-    return render(request, 'common/product.html', context)
+    return render(request, 'common/../../templates/product/product.html', context)
 
 
 @login_required

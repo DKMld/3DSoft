@@ -1,0 +1,244 @@
+{% extends 'common/home.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>SuperMart - eCommerce HTML5 Template</title>
+    <meta name="description"
+        content="SuperMart eCommerce HTML Template specially designed for multipurpose shops like the mega store, grocery stores, supermarkets, organic shops, and online stores" />
+    <link rel="shortcut icon" href="{% static 'images/favicon.png' %}" type="image/f-icon" />
+
+    <!-- font awesome -->
+    <link rel="stylesheet" href="{% static 'css/all.min.css' %}" />
+    <!-- bootstraph -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <!-- Fancy Box -->
+    <link rel="stylesheet" href="{% static 'css/jquery.fancybox.min.css' %}" />
+    <!-- swiper js -->
+    <link rel="stylesheet" href="{% static 'css/swiper-bundle.min.css' %}" />
+    <!-- Nice Select -->
+    <link rel="stylesheet" href="{% static 'css/nice-select.css' %}" />
+    <!-- Countdown js -->
+    <link rel="stylesheet" href="{% static 'css/jquery.countdown.css' %}" />
+    <!-- User's CSS Here -->
+    <link rel="stylesheet" href="{%  static 'css/style.css' %}" />
+</head>
+
+<body>
+{% block content %}
+
+
+
+    <!-- All Category Section Start -->
+    <section class="archive-category">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-12">
+                    <div class="section-title mb-30">
+                        <h2>Products</h2>
+{#                        <div class="shortBy-select select__style d-lg-none d-flex">#}
+{#                            <label for="sortBy">Sort by:</label>#}
+{#                            <select name="sortBy" id="sortBy">#}
+{#                                <option value="0">Relevance</option>#}
+{#                                <option value="0">Name (A-Z)</option>#}
+{#                                <option value="0">Name (Z-A)</option>#}
+{#                                <option value="0">Date</option>#}
+{#                                <option value="0">Sale</option>#}
+{#                            </select>#}
+{#                        </div>#}
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="filter__area">
+                        <div class="section-title__wrap">
+
+                            <ul class="filtered-query">
+
+                            </ul>
+                        </div>
+
+
+                            <div class="shortBy-select select__style d-lg-flex d-none">
+                                <label for="sortBy2">Sort by:</label>
+
+                                <select onChange="window.location.href=this.value" class="selectVal"  name="sortBy" id="sortBy2">
+
+                                    <option value="{% url 'products_page' category sub_category 'default' %}?page={{ current_page }}" name="default" >Default</option>
+                                    <option value="{% url 'products_page' category sub_category 'price_h2l' %}?page={{ current_page }}"  name="price_h2l" >Price: H to L</option>
+                                    <option value="{% url 'products_page' category sub_category 'price_l2h' %}?page={{ current_page }}"  name="price_l2h" >Price: L to H</option>
+                                    <option value="{% url 'products_page' category sub_category 'on_sale' %}?page={{ current_page }}" name="on_sale" >On Sale</option>
+                                    <option value="{% url 'products_page' category sub_category 'in_stock' %}?page={{ current_page }}" name="in_stock" >In-Stock</option>
+                                    <option value="{% url 'products_page' category sub_category 'out_of_stock' %}?page={{ current_page }}" name="out_of_stock" >Out of Stock</option>
+
+                                </select>
+
+                                <script>
+                                    {# This script gets the value of the 'Sort by' and updates it with the new value #}
+                                    document.addEventListener("DOMContentLoaded", function() {
+                                        var current_choice= document.getElementById("sort_choice");
+                                        current_choice.textContent = '{{ sorting }}'
+                                    });
+
+                                </script>
+                            </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="product-card__wrapper" style="display: flex; justify-content: start">
+
+
+                        {% for prod in products %}
+
+                        <div class="product-card">
+                            <div class="product__image__wrapper">
+                                <a href="{% url 'product_detail' prod.slug %}" class="product__image">
+                                    <img src="{{ prod.image.url }}" alt="icon" />
+                                </a>
+
+
+                                {% if prod.discount_percentage == 0 %}
+                                    <div class="badge"></div>
+                                {% else %}
+                                    <div class="badge">{{ prod.discount_percentage }}%</div>
+                                {% endif %}
+
+
+                                <div class="product__actions">
+
+{#                                    <a href="#" class="action__btn">#}
+{#                                        <svg width="16" height="14" viewBox="0 0 16 14" fill="none"#}
+{#                                            xmlns="http://www.w3.org/2000/svg">#}
+{#                                            <path d="M13.8931 2.07333C13.5526 1.73267 13.1483 1.46243 12.7033#}
+{#                                            1.27805C12.2584 1.09368 11.7814 0.998779 11.2998 0.998779C10.8181 0.998779 10.3412 1.09368 9.89618#}
+{#                                            1.27805C9.45121 1.46243 9.04692 1.73267 8.70642 2.07333L7.99975 2.78L7.29309 2.07333C6.60529 1.38553 5.67244#}
+{#                                            0.999136 4.69975 0.999136C3.72706 0.999136 2.79422 1.38553 2.10642 2.07333C1.41863 2.76112 1.03223 3.69397#}
+{#                                            1.03223 4.66666C1.03223 5.63935 1.41863 6.5722 2.10642 7.26L2.81309 7.96666L7.99975 13.1533L13.1864 7.96666L13.8931#}
+{#                                            7.26C14.2337 6.91949 14.504 6.51521 14.6884 6.07023C14.8727 5.62526 14.9676 5.14832 14.9676 4.66666C14.9676 4.185 14.8727#}
+{#                                            3.70807 14.6884 3.26309C14.504 2.81812 14.2337 2.41383 13.8931 2.07333V2.07333Z"#}
+{#                                                stroke="#252522" stroke-linecap="round" stroke-linejoin="round">#}
+{#                                            </path>#}
+{#                                        </svg>#}
+{#                                    </a>#}
+
+                                </div>
+                            </div>
+                            <div class="product__content">
+{#                                <div class="product__rating">#}
+{#                                    <ul>#}
+{#                                        <li><i class="fa-solid fa-star"></i></li>#}
+{#                                        <li><i class="fa-solid fa-star"></i></li>#}
+{#                                        <li><i class="fa-solid fa-star"></i></li>#}
+{#                                        <li><i class="fa-solid fa-star"></i></li>#}
+{#                                        <li><i class="fa-regular fa-star"></i></li>#}
+{#                                    </ul>#}
+{#                                    <div class="total__rating">(321)</div>#}
+{#                                </div>#}
+                                <div class="product__title">
+                                    <h5><a href="#">{{ prod.product_name}}</a></h5>
+                                </div>
+
+                                <div class="product__bottom">
+                                    <div class="product__price">
+{#                                                    new price#}
+                                        {% if prod.discount_percentage == 0 %}
+                                            {{ prod.price }} lv.
+                                        {% else %}
+                                            {{ prod.discounted_price }} lv.
+                                        {% endif %}
+{#                                        old price #}
+                                        {% if prod.discount_percentage == 0 %}
+                                            <del></del>
+                                        {% else %}
+                                            <del>{{ prod.price }} lv.</del>
+                                        {% endif %}
+                                    </div>
+
+                                    <div class="cart__action__btn" >
+                                        <div class="" >
+                                            <a href="{% url 'product_add_to_cart' prod.slug %}"  class="btn btn-outline">Add to cart</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <!-- pagination start  -->
+
+                    <nav class="pagination__wrapper">
+                        <ul class="pagination">
+                            <li class="pagination__item">
+                                <a class="page-link" href="#"><i class="fa-solid fa-angle-left"></i></a>
+                            </li>
+
+                            {% for page in total_pages %}
+                            <li class="pagination__item active"><a class="page-link" href="?page={{ page }}">{{ page }}</a></li>
+                            {% endfor %}
+
+                            <li class="pagination__item">
+                                <a class="page-link" href="#"><i class="fa-solid fa-angle-right"></i></a>
+                            </li>
+                        </ul>
+                        <div class="pagination__jump">
+                            <label class="junp__label" for="pageNumber">Go to Page</label>
+                            <input type="number" name="page" id="pageNumber" class="jump__input" placeholder="02" />
+                            <button class="btn btn-outline jump__btn" type="submit">GO <i
+                                    class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                    </nav>
+
+                    <!-- pagination end -->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- All Category Section End -->
+
+    <!-- CAll To Action Start -->
+    <section class="call__to__action">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="cta__box__wrapper text-center">
+                        <h2 class="cta__title">Get notified when we're launching new products</h2>
+                        <p class="cta__content">Get notified every time there is a new product on our website.</p>
+                        <form action="#" method="post" class="cta__form">
+                            <label>
+                                <input type="email" name="email" class="form-control" placeholder="Enter your email" />
+                            </label>
+                            <button type="submit" class="btn btn-primary">Notify me</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- CAll To Action End -->
+
+
+
+
+
+{% endblock %}
+</body>
+
+</html>

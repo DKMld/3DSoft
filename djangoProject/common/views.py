@@ -1,7 +1,7 @@
 import requests
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
-from djangoProject.products.models import Products, ProductsCart
+from djangoProject.products.models import Products, ProductsCart, ProductsLikes
 
 
 def home_page(request):
@@ -34,6 +34,32 @@ def home_page(request):
     }
 
     return render(request, 'common/home.html', context)
+
+
+def wishlist(request):
+    products_in_cart = None
+    total_price_of_cart = None
+    number_of_products_in_cart = None
+    products_in_current_user_wishlist = None
+
+    if request.user.is_authenticated:
+        user = request.user
+        products_in_cart = ProductsCart.objects.filter(user=user)
+        total_price_of_cart = ProductsCart.total_price(current_user=user)
+        number_of_products_in_cart = ProductsCart.total_products_in_user_cart(user)
+        products_in_current_user_wishlist = ProductsLikes.objects.filter(user=request.user)
+
+    context = {
+        'user_is_auth': request.user.is_authenticated,
+
+        'products_in_cart': products_in_cart,
+        'number_of_products_in_cart': number_of_products_in_cart,
+        'total_cart_price': total_price_of_cart,
+
+        'products_in_wishlist': products_in_current_user_wishlist,
+    }
+
+    return render(request, 'common/wishlist.html', context)
 
 
 def checkout(request):
